@@ -250,7 +250,7 @@ main {
 }
 
 .dev-environment-section .background {
-    background-image: url(assets/images/code_editor.gif);
+    background-image: url('../images/code_editor.gif');
     background-size: contain;
     background-attachment: fixed;
     top: 0;
