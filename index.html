@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Site - Like Replit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        h5 {
+            margin: 12px;
+        }
+        
+       body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            height: 100%;
+        }
+        
+        /* Header Styling */
+        header {
+            background-color: #212121;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Logo */
+        header .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        
+        /* Navigation Styling */
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        header nav a {
+            color: #fff;
+            margin-left: 2rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        
+        /* To style the menu button (hamburger) */
+        .menu-toggle {
+            display: none;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background-color: #0078d4;
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero button {
+            padding: 1rem 2rem;
+            background-color: #fff;
+            border: none;
+            color: #0078d4;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Main Content */
+        main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background-color: #e5e5e5;
+            gap: 8rem;
+        }
+
+        .content-box {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 80%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-box h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 1rem;
+        }
+        
+        .text-content {
+            text-align: center;
+        }
+        
+        .title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+        
+        .description {
+            font-size: 1rem;
+            max-width: 50ch;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+        
+        /*********** ACCORDION **************/
+        .accordion-section {
+            padding: 1rem;
+        }
+        
+        .accordion-item {
+            background-color: rgba(88, 190, 79, 0.1);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .accordion-button {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: none;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            min-width: 360px; /* Adjusted for smaller screens */
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+        
+        .accordion-button:focus {
+            outline: none;
+        }
+        
+        .accordion-button:focus-visible {
+            outline: 2px solid rgba(88, 190, 79, 0.8); /* Example outline */
+            outline-offset: 2px;
+        }
+        
+        /* Active State Style */
+        .accordion-button:active {
+            background-color: rgba(88, 190, 79, 0.2); /* Example active background color */
+            /* Apply focus-visible styles to active state */
+            outline: 2px solid rgba(88, 190, 79, 0.8);
+            outline-offset: 2px;
+        }
+        .indicator {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(88, 190, 79, 1);
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+        
+        .accordion-title {
+            font-size: 1rem;
+            margin: 0;
+            flex: 1; /* Allows the title to take up available space */
+            text-align: left; /* Aligns text to the left */
+        }
+        
+        .icon {
+            width: 19px;
+            height: 19px;
+        }
+
+        /********************** EFFICENCY *******************/
+        .efficiency-section {
+            background-color: #f4f4f4;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .efficiency-section .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .efficiency-section .section-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .efficiency-section .section-description {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .efficiency-section .illustrations {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        
+        .efficiency-section .svg-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            text-align: center;
+            width: 150px;
+        }
+        
+        .efficiency-section .illustration-description {
+            font-size: 1rem;
+            color: #333;
+            margin-top: 0.5rem;
+        }
+        
+
+        /****************** DEVELOPMENT ENVIROMENT ***********************/
+        .dev-environment-section {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        
+        .dev-environment-section .background {
+            background-image: url(assets/images/code_editor.gif);
+            background-size: cover;
+            background-attachment: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-repeat: no-repeat;
+        }
+        
+        .dev-environment-section .overlay {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for overlay */
+            border-radius: 8px;
+            margin: 2rem auto;
+            max-width: 80%;
+            transform: translateZ(100px);
+        }
+        
+        .dev-environment-section .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        
+        .dev-environment-section .section-description {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .dev-environment-section .code-editor {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .code-editor svg {
+            width: 100%;
+            height: auto;
+        }
+        
+        /**************** Responsive Styling *******************/
+        @media (min-width: 600px) {
+            .accordion-button {
+                min-width: 350px; 
+            }
+        
+            .accordion-title {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
+            
+            header .logo {
+                margin-bottom: 1rem;
+            }
+            
+            header nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #212121;
+                padding: 1rem;
+            }
+            
+            header nav.active {
+                display: flex;
+            }
+            
+            header .menu-toggle {
+                display: block;
+                background: #fff;
+                border: none;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+            
+            header .menu-toggle:focus {
+                outline: none;
+            }
+            
+            header nav a {
+                margin: 0;
+                padding: 1rem 0;
+                border-bottom: 1px solid #333;
+            }
+        
+            .illustrations {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        
+            .svg-container {
+                width: 100%;
+            }    
+            .code-editor {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .section-description {
+                font-size: 1rem;
+            }
+        }
+        
+        
+        @media (min-width: 800px) {
+            .container {
+                padding: 0;
+            }
+        
+            .accordion-item {
+                margin-bottom: 1.5rem;
+            }
+            
+            .accordion-button {
+                min-width: 400px; /* Larger for larger screens */
+            }
+        
+            .accordion-title {
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 2rem;
+            }
+        
+            .title {
+                font-size: 3rem;
+            }
+        
+            .description {
+                font-size: 1.25rem;
+            }
+            
+             .accordion-button {
+                min-width: 450px; /* Even larger for extra-large screens */
+            }
+        
+            .accordion-title {
+                font-size: 1.3rem;
+            }
+        
+            .icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+        /*************** Footer Styling ****************/
+        footer {
+            background-color: #212121;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">YourSite</a>
+        <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <nav>
+            <a href="#">Features</a>
+            <a href="#">Pricing</a>
+            <a href="#">Community</a>
+            <a href="#">Login</a>
+        </nav>
+    </header>
+
+
+    <section class="hero">
+        <h1>Code Anywhere, Anytime</h1>
+        <p>Build, collaborate, and deploy your projects from your browser.</p>
+        <button>Get Started</button>
+    </section>
+
+    <main>
+        <div class="content-box">
+            <h2>What We Offer</h2>
+            <p>Our platform is designed to make coding and development accessible for everyone. Whether you're a beginner learning your first language, or a professional working on multiple projects, we provide the tools and support you need.</p>
+        </div>
+        
+        <section class="efficiency-section">
+            <div class="container">
+                <h2 class="section-title">Efficiency and Effectiveness</h2>
+                <p class="section-description">
+                    Our software is designed for optimal performance, ensuring fast and reliable results. 
+                    With cutting-edge technology and streamlined processes, we guarantee efficiency and effectiveness in every aspect.
+                </p>
+                <div class="illustrations">
+                    <div class="svg-container">
+                        <!-- SVG for Performance Metrics -->
+                        <svg width="150" height="150" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="40" stroke="#4CAF50" stroke-width="5" fill="none" />
+                            <circle cx="50" cy="50" r="40" stroke="#4CAF50" stroke-width="5" stroke-dasharray="251.2" stroke-dashoffset="75.36" fill="none" />
+                            <text x="50" y="55" text-anchor="middle" font-size="20" fill="#4CAF50">75%</text>
+                        </svg>
+                        <p class="illustration-description">Fast Processing Speed</p>
+                    </div>
+                    <div class="svg-container">
+                        <!-- SVG for Reliability -->
+                        <svg width="150" height="150" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 30 L40 70 L90 10" stroke="#FFC107" stroke-width="5" fill="none" />
+                            <circle cx="10" cy="30" r="5" fill="#FFC107" />
+                            <circle cx="40" cy="70" r="5" fill="#FFC107" />
+                            <circle cx="90" cy="10" r="5" fill="#FFC107" />
+                        </svg>
+                        <p class="illustration-description">Reliable and Consistent</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dev-environment-section">
+            <h2 class="section-title">Our Development Environment</h2>
+            <p class="section-description">
+                Experience the future of development with our advanced environment. Equipped with AI-powered tools and modern features, 
+                it enhances productivity and streamlines coding workflows.
+            </p>
+            <div class="container">
+                <div class="background"></div>
+            </div>
+        </section>
+
+        <section class="accordion-section">
+            <div class="container">
+                <div class="text-content">
+                    <h2 class="title">Security at every step</h2>
+                    <p class="description">Replit keeps your source code safe in the cloud with enterprise-ready security that meets key industry standards.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        <span class="indicator"></span>
+                        <h5 class="accordion-title">Endpoint Security</h5>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+                            <path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        <span class="indicator"></span>
+                        <h5 class="accordion-title">Granular Permissions & Access Control</h5>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+                            <path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        <span class="indicator"></span>
+                        <h5 class="accordion-title">Granular Permissions & Access Control Granular Permissions & Access Control</h5>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+                            <path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false">
+                        <span class="indicator"></span>
+                        <h5 class="accordion-title">Granular Permissions & Access Control</h5>
+                        <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+                            <path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>    
+        <p>&copy; 2024 YourSite. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('header nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
