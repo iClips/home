@@ -22,81 +22,69 @@
 
     <section class="hero">
       <h1>Designed-to-Suit Apps for Every Need, No Matter the Budget</h1>
-      <p>Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.</p>
+      <p>
+        Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.
+      </p>
       
-      <!-- Budget Collage -->
-      <div class="budget-collage">
-          <img src="low-budget.jpg" alt="Low Budget Example">
-          <img src="medium-budget.jpg" alt="Medium Budget Example">
-          <img src="high-budget.jpg" alt="High Budget Example">
-      </div>
-      
-      <!-- Interactive Budget Calculator -->
       <div class="budget-calculator">
-          <span>Adjust Your Budget:</span>
-          <input type="range" min="0" max="100" value="50" id="budgetRange">
-          <span id="budgetValue">$50</span>
+        <span>Adjust Your Budget:</span>
+        <input type="range" min="0" max="100" value="50" id="budgetRange">
+        <span id="budgetValue">$50</span>
       </div>
-  </section>
+        
+      <div class="slider-container">
+        <input type="range" min="0" max="100" value="0" class="slider" id="projectSlider">
+        <div class="slider-indicator">Progress: <span id="progressValue">0</span>%</div>
+      
+        <div class="project-demo" id="demoContainer">
+          <div class="project-stage active" id="stage-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+              <rect x="100" y="50" width="600" height="80" fill="#333"/>
+                    <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
+                    <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
+                    <text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Hero Section</text>
+                    <rect x="100" y="460" width="600" height="30" fill="#333"/>
+                    <text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
+                </svg>
+            </div>
+      
+            <!-- Stage 2: Social Links and Pages -->
+            <div class="project-stage" id="stage-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+                    <rect x="100" y="50" width="600" height="80" fill="#333"/>
+                    <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
+                    <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
+                    <text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Hero Section</text>
+                    <rect x="100" y="460" width="600" height="30" fill="#333"/>
+                    <text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
+                    
+                    <!-- Social Links -->
+                    <circle cx="200" cy="470" r="10" fill="#4267B2"/>
+                    <circle cx="250" cy="470" r="10" fill="#1DA1F2"/>
+                    <circle cx="300" cy="470" r="10" fill="#FF4500"/>
+                    <circle cx="350" cy="470" r="10" fill="#FFFC00"/>
+                </svg>
+            </div>
+          </div>
 
-  <section class="slider-container">
-    <input type="range" min="0" max="100" value="0" class="slider" id="projectSlider">
-    <div class="slider-indicator">Progress: <span id="progressValue">0</span>%</div>
-
-    <div class="project-demo" id="demoContainer">
-      <!-- Multiple stages of the project -->
-
-      <!-- Stage 1: Basic Layout -->
-      <div class="project-stage active" id="stage-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+          <div class="project-stage" id="stage-3">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
               <rect x="100" y="50" width="600" height="80" fill="#333"/>
               <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
               <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
               <text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Hero Section</text>
               <rect x="100" y="460" width="600" height="30" fill="#333"/>
               <text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
-          </svg>
-      </div>
 
-      <!-- Stage 2: Social Links and Pages -->
-      <div class="project-stage" id="stage-2">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
-              <rect x="100" y="50" width="600" height="80" fill="#333"/>
-              <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
-              <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
-              <text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Hero Section</text>
-              <rect x="100" y="460" width="600" height="30" fill="#333"/>
-              <text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
-              
-              <!-- Social Links -->
-              <circle cx="200" cy="470" r="10" fill="#4267B2"/>
-              <circle cx="250" cy="470" r="10" fill="#1DA1F2"/>
-              <circle cx="300" cy="470" r="10" fill="#FF4500"/>
-              <circle cx="350" cy="470" r="10" fill="#FFFC00"/>
-          </svg>
-      </div>
-
-      <!-- Stage 3: API Integration -->
-      <div class="project-stage" id="stage-3">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
-              <rect x="100" y="50" width="600" height="80" fill="#333"/>
-              <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
-              <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
-              <text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Hero Section</text>
-              <rect x="100" y="460" width="600" height="30" fill="#333"/>
-              <text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
-
-              <!-- API Integration: Emails & Banking -->
               <rect x="150" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
               <text x="250" y="230" fill="#333" font-size="20" text-anchor="middle">Email API</text>
               <rect x="450" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
               <text x="550" y="230" fill="#333" font-size="20" text-anchor="middle">Banking API</text>
-          </svg>
-      </div>
+            </svg>
+          </div>
 
-      <!-- Stage 4: Mobile App Integration -->
-      <div class="project-stage" id="stage-4">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+          <div class="project-stage" id="stage-4">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
               <rect x="100" y="50" width="600" height="80" fill="#333"/>
               <rect x="100" y="150" width="600" height="300" fill="#0078d4"/>
               <text x="400" y="250" fill="white" font-size="30" text-anchor="middle">Header</text>
@@ -109,10 +97,10 @@
               <circle cx="625" cy="420" r="10" fill="white"/>
               <rect x="570" y="130" width="110" height="200" fill="#0078d4"/>
               <text x="625" y="220" fill="white" font-size="16" text-anchor="middle">Mobile App</text>
-          </svg>
-      </div>
-  </div>
-</section>
+            </svg>
+           </div>
+        </div>
+    </section>
     <main>
         <div class="content-box">
             <h2>I Offer</h2>
