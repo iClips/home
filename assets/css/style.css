@@ -11,6 +11,7 @@ body {
     height: 100%;
 }
 
+
 /* Header Styling */
 header {
     background-color: #212121;
@@ -43,19 +44,18 @@ header nav a {
     font-weight: 500;
 }
 
-
-/* To style the menu button (hamburger) */
+/* Menu button (hamburger) */
 .menu-toggle {
     display: none;
 }
 
-
 /* Hero Section */
 .hero {
-    background-color: #0078d4;
+    background: linear-gradient(to right, #4CAF50, #FFC107); /* Gradient Background */
     color: white;
     text-align: center;
     padding: 4rem 2rem;
+    position: relative;
 }
 
 .hero h1 {
@@ -77,6 +77,90 @@ header nav a {
     cursor: pointer;
     border-radius: 5px;
 }
+
+/* Budget Collage */
+.budget-collage {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.budget-collage img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Interactive Budget Calculator */
+.budget-calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.budget-calculator input[type="range"] {
+    width: 80%;
+}
+
+.budget-calculator span {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.slider-container {
+    margin: 50px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.slider {
+    width: 100%;
+}
+
+.project-demo {
+    position: relative;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    perspective: 1000px;
+}
+
+/* Placeholder for the animation states */
+.project-stage {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: transform 1s ease, opacity 1s ease;
+    opacity: 0;
+    transform: translateZ(-100px);
+}
+
+.project-stage.active {
+    opacity: 1;
+    transform: translateZ(0);
+}
+
+/* SVG Styling */
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Slider Indicator */
+.slider-indicator {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+
 
 /* Main Content */
 main {
@@ -211,7 +295,7 @@ main {
     font-size: 2rem;
     color: #333;
     margin-bottom: 1rem;
-}
+}   aZA
 
 .efficiency-section .section-description {
     font-size: 1.2rem;
