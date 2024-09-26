@@ -9,7 +9,6 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0ER5PGJ9PY"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -18,10 +17,11 @@
 
   gtag('config', 'G-0ER5PGJ9PY');
 </script>
+
 <body>  
     <header>
 		<nav class="main-nav">
-			<h1 class="logo-name">
+			<h1 class="logo">
 				<span class="b">I</span>
 				<span class="y">c</span>
 				<span class="g">l</span>
@@ -44,61 +44,66 @@
 			</nav>            
 		</nav>
 	</header>
-	
 
     <section id="welcome" class="hero">		
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
-			
-			<defs>
-				<!-- Gradient for background -->
-				<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-					<stop offset="0%" style="stop-color:#1a1a1a; stop-opacity:1" />
-					<stop offset="100%" style="stop-color:#808080; stop-opacity:1" />
-				</linearGradient>
-		
-				<!-- Box shadow filter -->
-				<filter id="boxShadow" x="-20%" y="-20%" width="140%" height="140%">
-					<feDropShadow dx="10" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
-				</filter>
-			</defs>
-		
-			<!-- Rectangle background with gradient and box-shadow -->
-			<rect x="44" y="44" width="712" height="112" fill="#333" filter="url(#boxShadow)" />
-		
-			<!-- Animated Circuit Lines -->
-			<g stroke="#ddd" stroke-width="2" stroke-opacity="0.3">
-				<line class="circuit-line" x1="150" y1="80" x2="200" y2="100" />
-				<line class="circuit-line" x1="200" y1="100" x2="150" y2="120" />
-				<line class="circuit-line" x1="600" y1="80" x2="550" y2="100" />
-				<line class="circuit-line" x1="550" y1="100" x2="600" y2="120" />
-			</g>
-		
-			<!-- Left logo (i logo) with hover/touch animation -->
-			<image class="logo" alt="business logo with i in center of circuit" href="/assets/images/logoi.png" x="70" y="50" width="100" height="100"  rx="30" ry="15"/>
-		
-			<!-- Right logo (C logo) with hover/touch animation -->
-			<image class="logo" alt="business logo with C forming an eclipse" href="/assets/images/logoc.png" x="630" y="50" width="100" height="100"  rx="60" ry="45"/>
-		
-			<!-- Center text -->
-			<text x="400" y="120" fill="white" font-size="50" text-anchor="middle" font-family="'Orbitron', sans-serif">
-				Innovative-Tech
-			</text>
-		</svg>
-		
-		
-		
-		
-		  
-        <h1>Designed-to-Suit Apps for Every Need, and Every Budget</h1>
-        <p>Welcome to our world of personalized digital solutions! Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.</p>
+        <div class="my-container">
+    		<svg class="logo-wrapper" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="100%">
+    			<defs>
+    				<!-- Gradient for background -->
+    				<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+    					<stop offset="0%" style="stop-color:#1a1a1a; stop-opacity:1" />
+    					<stop offset="100%" style="stop-color:#808080; stop-opacity:1" />
+    				</linearGradient>
+    		
+    				<!-- Box shadow filter -->
+    				<filter id="boxShadow" x="-20%" y="-20%" width="140%" height="140%">
+    					<feDropShadow dx="10" dy="10" stdDeviation="10" flood-color="#000" flood-opacity="0.5" />
+    				</filter>
+    				
+    				<!-- Clipping path with border-radius of 12px for the left logo -->
+                    <clipPath id="clip-left-logo">
+                        <rect x="70" y="50" width="100" height="100" rx="12" ry="12" />
+                    </clipPath>
+            
+                    <!-- Clipping path with border-radius of 12px for the right logo -->
+                    <clipPath id="clip-right-logo">
+                        <rect x="630" y="50" width="100" height="100" rx="12" ry="12" />
+                    </clipPath>
+    			</defs>
+    		
+    			<!-- Rectangle background with gradient and box-shadow -->
+    			<rect x="44" y="44" width="712" height="112" fill="#333" filter="url(#boxShadow)" />
+    		
+    			<!-- Animated Circuit Lines -->
+    			<g stroke="#ddd" stroke-width="2" stroke-opacity="0.3">
+    				<line class="circuit-line" x1="150" y1="80" x2="200" y2="100" />
+    				<line class="circuit-line" x1="200" y1="100" x2="150" y2="120" />
+    				<line class="circuit-line" x1="600" y1="80" x2="550" y2="100" />
+    				<line class="circuit-line" x1="550" y1="100" x2="600" y2="120" />
+    			</g>
+    		
+                <image class="logo" alt="business logo with i in center of circuit" href="assets/images/logoi.png"
+           x="70" y="50" width="100" height="100" clip-path="url(#clip-left-logo)" />
+           
+                <image class="logo" alt="business logo with C forming an eclipse" href="assets/images/logoc.png"
+           x="630" y="50" width="100" height="100" clip-path="url(#clip-right-logo)" />
+           
+    			<!-- Center text -->
+    			<text x="400" y="120" fill="white" font-size="50" text-anchor="middle" font-family="'Orbitron', sans-serif" style="animation: text-glow 3s infinite ease-in-out;">
+    				Innovative-Tech
+    			</text>
+    		</svg>
+		</div>
+        <h1 class="tag slide-in-top">Designed-to-Suit Apps for Every Need, and Every Budget</h1>
+        <p class="tag slide-in-bottom">Welcome to our world of personalized digital solutions! Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.</p>
       
 		<div class="slider-container">
 			<div class="instruction-note">Drag the slider to adjust the value</div>
-			<input type="range" min="0" max="100" value="0" step="20" class="slider" id="projectSlider">
+			<input type="range" min="0" max="100" value="0" step="20" class="slider tag slide-in-bottom" id="projectSlider">
 			
-			<div class="slider-indicator">Your Budget: <span id="progressValue">2000</span> ZAR</div>
+			<div class="slider-indicator tag slide-in-bottom">Your Budget: <span id="progressValue">2000</span> ZAR</div>
 			
-			<div class="project-demo" id="demoContainer">
+			<div class="project-demo tag slide-in-bottom" id="demoContainer">
 				<!-- Multiple stages of the project -->
 		
 				<!-- Stage 1: Basic Layout -->
@@ -143,9 +148,9 @@
 		
 						<!-- API Integration: Emails & Banking -->
 						<rect x="150" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="250" y="230" fill="#333" font-size="20" text-anchor="middle">Email API</text>
+						<text x="250" y="230" fill="#333" font-size="20" text-anchor="middle">Process Feature</text>
 						<rect x="450" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="550" y="230" fill="#333" font-size="20" text-anchor="middle">Banking API</text>
+						<text x="550" y="230" fill="#333" font-size="20" text-anchor="middle">Process Feature</text>
 
 						<!-- Social Links -->
 						<circle cx="200" cy="475" r="10" fill="#4267B2"/>
@@ -167,9 +172,9 @@
 		
 						<!-- API Integration: Emails & Banking -->
 						<rect x="150" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="250" y="230" fill="#333" font-size="20" text-anchor="middle">Email API</text>
+						<text x="250" y="230" fill="#333" font-size="20" text-anchor="middle">Process Feature</text>
 						<rect x="450" y="180" width="200" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="550" y="230" fill="#333" font-size="20" text-anchor="middle">Banking API</text>
+						<text x="550" y="230" fill="#333" font-size="20" text-anchor="middle">Process Feature</text>
 
 						<!-- Social Links -->
 						<circle cx="200" cy="475" r="10" fill="#4267B2"/>
@@ -209,10 +214,10 @@
 				
 						<!-- API Integration -->
 						<rect x="200" y="300" width="150" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="275" y="340" fill="#333" font-size="16" text-anchor="middle">Email API</text>
+						<text x="275" y="340" fill="#333" font-size="16" text-anchor="middle">Process Feature</text>
 						
 						<rect x="450" y="300" width="150" height="80" fill="white" stroke="#333" stroke-width="2"/>
-						<text x="525" y="340" fill="#333" font-size="16" text-anchor="middle">Banking API</text>
+						<text x="525" y="340" fill="#333" font-size="16" text-anchor="middle">Process Feature</text>
 				
 						<!-- Connection lines from Server to APIs -->
 						<line x1="400" y1="250" x2="275" y2="300" stroke="black" stroke-width="2" />
@@ -231,18 +236,56 @@
 			</div>
 		</div>
     </section>
-
-
+    
     <main>
-        <section id="about" class="content-box">
-            <h2>I Offer</h2>
-            <p>Our platform is designed to make coding and development accessible for everyone. Whether you're a beginner learning your first language, or a professional working on multiple projects, we provide the tools and support you need.</p>
+        <section id="types" class="content-box">
+            <div class="center-heading tag slide-in-top">
+                <h2>Digital<em> Solutions </em>Tailored to You</h2>
+            </div>    
+            <div class="left-image-decor tag slide-in-left"></div>
+        
+            <!-- ***** Features Big Item Start ***** -->
+            <div class="section" id="promotion">
+                <div class="container">
+                    <div class="row">
+                        <div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
+                            data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
+                            <img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+                        </div>
+                        <div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
+                            <ul>
+                                <li class="tag slide-in-right" data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+                                    <img src="assets/images/about-icon-01.png" alt="">
+                                    <div class="text">
+                                        <h4>Mobile and Web Application Development</h4>
+                                        <p>IClips focuses on building modern, user-friendly mobile and web applications that offer innovative features and intuitive experiences. Whether it's for consumer apps, enterprise solutions, or cross-platform development, IClips delivers high-quality applications designed to meet the evolving demands of businesses and users.</p>
+                                    </div>
+                                </li>
+                                <li class="tag slide-in-right" data-scroll-reveal="enter right move 30px over 0.6s after 0.5s">
+                                    <img src="assets/images/about-icon-01.png" alt="">
+                                    <div class="text">
+                                        <h4>Software Development and Integration</h4>
+                                        <p>IClips provides custom software development tailored to unique business needs, helping clients build scalable, high-performance applications. In addition to creating new solutions, IClips excels in integrating existing platforms and tools, ensuring seamless operation and enhanced productivity across all digital infrastructures.</p>
+                                    </div>
+                                </li>
+                                <li class="tag slide-in-right" data-scroll-reveal="enter right move 30px over 0.6s after 0.6s">
+                                    <img src="assets/images/about-icon-01.png" alt="">
+                                    <div class="text">
+                                        <h4>Internet of Things (IoT)</h4>
+                                        <p>IClips specializes in creating smart, connected systems that enable real-time monitoring and automation across various industries. From smart homes and cities to industrial automation and healthcare, IClips delivers innovative IoT solutions that streamline processes, enhance efficiency, and provide actionable data insights for better decision-making.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section class="efficiency-section">
             <div class="container">
-                <h2 class="section-title">Efficiency and Effectiveness</h2>
-                <p class="section-description">
+                <h2 class="section-title tag slide-in-top">Efficiency and Effectiveness</h2>
+                <p class="section-description tag slide-in-bottom">
                     Our software is designed for optimal performance, ensuring fast and reliable results. 
                     With cutting-edge technology and streamlined processes, we guarantee efficiency and effectiveness in every aspect.
                 </p>
@@ -269,167 +312,168 @@
                 </div>
             </div>
         </section>
-
+    
         <section class="dev-environment-section">
             <h2 class="section-title">Our Development Environment</h2>
             <div class="container">
-				<p class="section-description">
-					Experience the future of development with our advanced environment. Equipped with AI-powered tools and modern features, 
-					it enhances productivity and streamlines coding workflows.
-				</p>
+    			<p class="section-description">
+    				Experience the future of development with our advanced environment. Equipped with AI-powered tools and modern features, 
+    				it enhances productivity and streamlines coding workflows.
+    			</p>
                 <div class="background"></div>
             </div>
         </section>
-
+    
         <section class="accordion-section">
             <div class="container">
                 <div class="text-content">
                     <h2 class="title">Something on your mind? Let's clear it up.</h2>
                     <p class="description">
-						"I want to make you feel comfortable and at ease by answering important questions you might have. Whether you're wondering about our experience, communication, or ongoing support, this intuitive section is designed to address your concerns. Click on any question to find the answer you're looking for—I'm here to make sure you feel confident in your decision."
-					</p>
+    					"I want to make you feel comfortable and at ease by answering important questions you might have. Whether you're wondering about our experience, communication, or ongoing support, this intuitive section is designed to address your concerns. Click on any question to find the answer you're looking for—I'm here to make sure you feel confident in your decision."
+    				</p>
                 </div>
             </div>
             <div class="container">
                 <div class="accordion">
                     <!-- Accordion Item 1 -->
                     <div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Do they have relevant experience?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>Our portfolio showcases projects across various industries, from e-commerce to AI-powered apps, ensuring that we can meet your unique project needs.</p>
-						</div>
-					  </div>
-					
-					  <!-- Accordion Item 2 -->
-					  <div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">What does their portfolio look like?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We highlight our best work through detailed case studies, including designs, functionalities, and user feedback, so you know what to expect.</p>
-						</div>
-					  </div>
-					
-					  <!-- Accordion Item 3 -->
-					  <div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Are their skills up to date?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We use cutting-edge tools and technologies like React, AI integrations, and cloud solutions to ensure your app is built for the future.</p>
-						</div>
-					  </div>
-					
-					  <!-- Accordion Item 4 -->
-					  <div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">What do other clients say about them?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>Our clients consistently praise our communication, technical expertise, and dedication to delivering quality work on time.</p>
-						</div>
-					  </div>
-					
-					  <!-- Accordion Item 5 -->
-					  <div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Do they communicate clearly?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We prioritize clear, consistent communication, keeping you updated on every milestone to ensure your project’s success.</p>
-						</div>
-					  </div>
-					
-					<div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Do they fit within my budget?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We offer flexible pricing models designed to fit your needs, ensuring you get value for every penny spent.</p>
-						</div>
-					</div>
-					
-					<div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Will they deliver on time?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We adhere to strict deadlines and always keep you informed of the project’s timeline and progress.</p>
-						</div>
-					</div>
-					
-					<div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Do they provide ongoing support?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>Our team is available for continuous support, from updates to troubleshooting, ensuring long-term success.</p>
-						</div>
-					</div>
-					
-					<div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Can they adapt to my needs?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We understand that requirements can change. Our agile development approach allows us to adapt swiftly to evolving needs.</p>
-						</div>
-					</div>
-					
-					<div class="accordion-item">
-						<button class="accordion-button" aria-expanded="false">
-						  <span class="indicator"></span>
-						  <h5 class="accordion-title">Do they understand my business?</h5>
-						  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
-							<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
-						  </svg>
-						</button>
-						<div class="accordion-content">
-						  <p>We take the time to understand your business model and industry, ensuring that our solutions align with your goals.</p>
-						</div>
-					</div>
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Do they have relevant experience?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>Our portfolio showcases projects across various industries, from e-commerce to AI-powered apps, ensuring that we can meet your unique project needs.</p>
+    					</div>
+    				  </div>
+    				
+    				  <!-- Accordion Item 2 -->
+    				  <div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">What does their portfolio look like?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We highlight our best work through detailed case studies, including designs, functionalities, and user feedback, so you know what to expect.</p>
+    					</div>
+    				  </div>
+    				
+    				  <!-- Accordion Item 3 -->
+    				  <div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Are their skills up to date?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We use cutting-edge tools and technologies like React, AI integrations, and cloud solutions to ensure your app is built for the future.</p>
+    					</div>
+    				  </div>
+    				
+    				  <!-- Accordion Item 4 -->
+    				  <div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">What do other clients say about them?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>Our clients consistently praise our communication, technical expertise, and dedication to delivering quality work on time.</p>
+    					</div>
+    				  </div>
+    				
+    				  <!-- Accordion Item 5 -->
+    				  <div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Do they communicate clearly?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We prioritize clear, consistent communication, keeping you updated on every milestone to ensure your project’s success.</p>
+    					</div>
+    				  </div>
+    				
+    				<div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Do they fit within my budget?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We offer flexible pricing models designed to fit your needs, ensuring you get value for every penny spent.</p>
+    					</div>
+    				</div>
+    				
+    				<div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Will they deliver on time?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We adhere to strict deadlines and always keep you informed of the project’s timeline and progress.</p>
+    					</div>
+    				</div>
+    				
+    				<div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Do they provide ongoing support?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>Our team is available for continuous support, from updates to troubleshooting, ensuring long-term success.</p>
+    					</div>
+    				</div>
+    				
+    				<div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Can they adapt to my needs?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We understand that requirements can change. Our agile development approach allows us to adapt swiftly to evolving needs.</p>
+    					</div>
+    				</div>
+    				
+    				<div class="accordion-item">
+    					<button class="accordion-button" aria-expanded="false">
+    					  <span class="indicator"></span>
+    					  <h5 class="accordion-title">Do they understand my business?</h5>
+    					  <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none">
+    						<path d="M8.799 19V0H10.201V19H8.799ZM0.5 10.063V8.781H18.5V10.063H0.5Z" fill="currentColor" opacity="0.3"></path>
+    					  </svg>
+    					</button>
+    					<div class="accordion-content">
+    					  <p>We take the time to understand your business model and industry, ensuring that our solutions align with your goals.</p>
+    					</div>
+    				</div>
                 </div>                  
             </div>
         </section>
     </main>
+        
     
     <footer id="contact-us">
         <div class="center-heading">
@@ -508,6 +552,7 @@
             </div>
         </div>
     </footer>
+    <script src="assets/js/anim.js"></script>
     <script>
         const slider = document.getElementById("projectSlider");
 		const progressValue = document.getElementById("progressValue");

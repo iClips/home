@@ -83,7 +83,7 @@ header h1 {
     font-weight: 900;
     letter-spacing: -2px;
     color: #333;
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Roboto', sans-serif;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -92,7 +92,7 @@ header h1 span {
 }
 
 header h1:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* Logo color classes */
@@ -110,7 +110,7 @@ header h1:hover {
     100% { color: #EA4335; }  /* Back to Red */
 }
 
-.logo span {
+.nav li {
     animation: colorChange 6s linear infinite;
     transition: transform 0.3s ease-in-out;
 }
@@ -128,33 +128,9 @@ header h1:hover {
 .logo span:nth-child(11) { animation-delay: 5s; }  /* 'H' */
 
 /* Add hover effect to make the logo stand out further */
-.logo-name span:hover {
-    transform: scale(1.2);
-    transition: transform 0.3s ease-in-out;
-}
-
-.logo {
-    transition: transform 0.3s ease;
-    transform-origin: center;
-}
-
-.logo:hover,
-.logo:active {
-    transform: scale(1.4);
-}
-
-/* CSS for circuit line animation */
-.circuit-line {
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    animation: draw 1.5s ease forwards;
-}
-
-/* Animation to draw the lines */
-@keyframes draw {
-    to {
-        stroke-dashoffset: 0;
-    }
+.logo span:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease-in-out;
 }
 
 /* Navigation links */
@@ -206,7 +182,157 @@ header h1:hover {
     }
 }
 
+/**************** Slide In-To-View Animators ****************/
+.tag {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.5s ease;
+}
+
+/* Slide in animations */
+.slide-in-top {
+    transform: translateY(-50px);
+}
+
+.slide-in-bottom {
+    transform: translateY(50px);
+}
+
+.slide-in-right {
+    transform: translateX(50px);
+}
+
+.slide-in-left {
+    transform: translateX(-50px);
+}
+
+/* Show the tag */
+.tag.show {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide to original position */
+}
+
 /**************** HERO *******************/
+.my-container {
+    width: 100%;
+    max-width: 100%; /* You can control maximum size */
+    height: auto;
+}
+.logo {
+    transition: transform 1.3s ease-in-out;
+    transform-origin: center;
+}
+
+.logo-wrapper:hover .logo {
+    transform: scale(1.2);
+}
+
+
+/* CSS for circuit line animation */
+.circuit-line {
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+	animation: draw 1.5s ease forwards;
+}
+
+/* Animation to draw the lines */
+@keyframes draw {
+	to {
+		stroke-dashoffset: 0;
+	}
+}
+
+.svg-container {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animation for text */
+@keyframes text-glow {
+    0% {
+        fill: #ffffff;
+        text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    }
+    50% {
+        fill: #00ffcc;
+        text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+    }
+    100% {
+        fill: #ffffff;
+        text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff, 0 0 20px #00d4ff;
+    }
+}
+
+@keyframes text-glow-logo {
+    0% {
+        fill: #ffffff;
+        text-shadow: 0 0 5px #e90909d1, 0 0 10px #e90909e3, 0 0 20px #e90909;
+    }
+    
+    50% {
+        fill: #009980;
+        text-shadow: 0 0 10px #290059e0, 0 0 20px #290059f0, 0 0 30px #290059;
+    }
+    100% {
+        fill: #ffffff;
+        text-shadow: 0 0 5px #0a013dd9, 0 0 10px #0a013de6, 0 0 20px #0a013d;
+    }
+}
+
+@keyframes glow {
+    0% {
+        stroke: #009980
+        stroke-width: 2;
+        filter: drop-shadow(0px 0px 10px #009980);
+    }
+    50% {
+        stroke: #0080b3; 
+        stroke-width: 3;
+        filter: drop-shadow(0px 0px 20px #0080b3);
+    }
+    100% {
+        stroke: #009980; 
+        stroke-width: 2;
+        filter: drop-shadow(0px 0px 10px #009980);
+    }
+}
+
+
+
+
+/* CSS for circuit line animation */
+.circuit-line {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: draw 2s ease forwards;
+}
+
+/* Animation to draw the lines */
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Animation for electron movement */
+.electron {
+    fill: #FFD700; /* gold color for electrons */
+    animation: moveElectron 2s linear infinite;
+}
+
+@keyframes moveElectron {
+    from {
+        offset-distance: 0%;
+    }
+    to {
+        offset-distance: 100%;
+    }
+}
+
 .hero {
     background: linear-gradient(to right, #4CAF50, #FFC107);
     color: white;
@@ -424,6 +550,53 @@ main {
     margin: 0 auto;
     opacity: 0.8;
 }
+
+/******************** What We Do ********************/
+.left-image-decor {
+  background-image: url(../images/left-bg-decor.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 100%;
+  display: inline-block;
+  height: 110%;
+  margin-top: -200px;
+}
+
+#types {
+  padding: 100px 0px;
+}
+
+#types .left-image {
+  align-self: center;
+}
+
+#types .right-text ul {
+  padding: 0;
+  margin: 0;
+}
+
+#types .right-text ul li {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+#types .right-text ul li:last-child {
+  margin-bottom: 0px;
+}
+
+#types .right-text img {
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
+}
+
+#types .right-text h4 {
+  font-size: 22px;
+  color: #1e1e1e;
+  margin-bottom: 15px;
+  margin-top: 3px;
+}
+
 
 /*********** ACCORDION **************/
 .accordion-section {
@@ -1016,3 +1189,4 @@ footer .sub-footer p {
     font-weight: 300;
     letter-spacing: 0.5px;
 }
+/* this */
