@@ -21,7 +21,7 @@
 <body>  
     <header>
 		<nav class="main-nav">
-			<h1 class="logo">
+			<h1 class="logo-name">
 				<span class="b">I</span>
 				<span class="y">c</span>
 				<span class="g">l</span>
@@ -48,33 +48,7 @@
 
     <section id="welcome" class="hero">		
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
-			<style>
-				/* CSS for hover and touch effects on logos */
-				.logo {
-					transition: transform 0.3s ease;
-					transform-origin: center;
-				}
-		
-				.logo:hover,
-				.logo:active {
-					transform: scale(1.2);
-				}
-		
-				/* CSS for circuit line animation */
-				.circuit-line {
-					stroke-dasharray: 100;
-					stroke-dashoffset: 100;
-					animation: draw 1.5s ease forwards;
-				}
-		
-				/* Animation to draw the lines */
-				@keyframes draw {
-					to {
-						stroke-dashoffset: 0;
-					}
-				}
-			</style>
-		
+			
 			<defs>
 				<!-- Gradient for background -->
 				<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -89,7 +63,7 @@
 			</defs>
 		
 			<!-- Rectangle background with gradient and box-shadow -->
-			<rect x="44" y="44" width="712" height="112" fill="url(#gradient1)" filter="url(#boxShadow)" />
+			<rect x="44" y="44" width="712" height="112" fill="#333" filter="url(#boxShadow)" />
 		
 			<!-- Animated Circuit Lines -->
 			<g stroke="#ddd" stroke-width="2" stroke-opacity="0.3">
@@ -100,10 +74,10 @@
 			</g>
 		
 			<!-- Left logo (i logo) with hover/touch animation -->
-			<image class="logo" alt="business logo with i in center of circuit" href="/assets/images/logoi.png" x="70" y="50" width="100" height="100" />
+			<image class="logo" alt="business logo with i in center of circuit" href="/assets/images/logoi.png" x="70" y="50" width="100" height="100"  rx="30" ry="15"/>
 		
 			<!-- Right logo (C logo) with hover/touch animation -->
-			<image class="logo" alt="business logo with C forming an eclipse" href="/assets/images/logoc.png" x="630" y="50" width="100" height="100" />
+			<image class="logo" alt="business logo with C forming an eclipse" href="/assets/images/logoc.png" x="630" y="50" width="100" height="100"  rx="60" ry="45"/>
 		
 			<!-- Center text -->
 			<text x="400" y="120" fill="white" font-size="50" text-anchor="middle" font-family="'Orbitron', sans-serif">
