@@ -374,12 +374,7 @@ header h1:hover {
     color: #1e1e1e;
     margin-bottom: 25px;
 }
-  
-.center-heading h2 em {
-    font-style: normal;
-    color: #f4813f;
-}
-  
+ 
 .center-heading p {
     font-size: 20px;
     color: #888;
@@ -894,7 +889,41 @@ button.main-button:hover {
 
 
 
+/************************** ****************************/
+#projects {
+  padding: 100px 0px;
+}
 
+#projects .left-image {
+  align-self: center;
+}
+
+#projects .right-text ul {
+  padding: 0;
+  margin: 0;
+}
+
+#projects .right-text ul li {
+  display: inline-block;
+  margin-bottom: 60px;
+}
+
+#projects .right-text ul li:last-child {
+  margin-bottom: 0px;
+}
+
+#projects .right-text img {
+  display: inline-block;
+  float: left;
+  margin-right: 30px;
+}
+
+#projects .right-text h4 {
+  font-size: 22px;
+  color: #1e1e1e;
+  margin-bottom: 15px;
+  margin-top: 3px;
+}
 
 
 
@@ -1105,9 +1134,9 @@ font-weight: 700;
 letter-spacing: 1px;
 }
 
-.footer-content .right-content h2 em {
-font-style: normal;
-color: #fba70b;
+h2 em {
+    font-style: normal;
+    color: #fba70b;
 }
 
 .footer-content .right-content p {
@@ -1189,4 +1218,3 @@ footer .sub-footer p {
     font-weight: 300;
     letter-spacing: 0.5px;
 }
-/* this */
