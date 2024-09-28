@@ -1,3 +1,140 @@
+/**************** Responsive Styling *******************/
+@media (min-width: 600px) {
+    .accordion-button {
+        min-width: 350px; 
+    }
+
+    .accordion-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .illustrations {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .svg-container {
+        width: 100%;
+    }    
+    .code-editor {
+        flex-direction: column;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-description {
+        font-size: 1rem;
+    }
+}
+
+
+@media (min-width: 800px) {
+    .container {
+        padding: 0;
+    }
+
+    .accordion-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    .accordion-button {
+        min-width: 400px; /* Larger for larger screens */
+    }
+
+    .accordion-title {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        padding: 0 2rem;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .description {
+        font-size: 1.25rem;
+    }
+    
+     .accordion-button {
+        min-width: 450px; /* Even larger for extra-large screens */
+    }
+
+    .accordion-title {
+        font-size: 1.3rem;
+    }
+
+    .icon {
+        width: 24px;
+        height: 24px;
+    }
+}
+@media (max-width: 992px) {
+    .nav {
+        display: none!important; /* Initially hidden on smaller screens */
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        padding: 10px;
+        width: 200px;
+        z-index: 10;
+    }
+
+    .nav.active {
+        display: flex!important; /* Show nav when active */
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-item {
+        font-size: 18px;
+        padding: 10px 0;
+    }
+    
+    footer {
+        padding-top: 0px!important;
+        margin-top: 0px!important;
+    }
+    .contact-form {
+        margin-bottom: 45px;
+    }
+     
+    footer .footer-content {
+        padding: 60px 0px!important;
+    }
+
+    footer .copyright, footer .social, 
+    footer .right-content {
+        text-align: center;
+    }    
+}
+
+@media (max-width: 991px) {
+    html, body {
+      overflow-x: hidden;
+    }    
+}
+
+
+
+
+
+
+
+
+
 :root {
     --content-padding: 16px 24px; 
 }
@@ -17,17 +154,17 @@ a {
 html, body {
     margin: 0;
     padding: 0;
-    width: 100vw;
-    overflow-x: hidden;
 }
 
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f5f5f5;
     color: #333;
-    height: 100%;
 }
 
+main, section {
+    width: 100%;
+}
 /************** Header **********************/
 /* Define the keyframes for the color transition */
 @keyframes colorTransition {
@@ -285,7 +422,7 @@ header h1:hover {
 
 @keyframes glow {
     0% {
-        stroke: #009980
+        stroke: #009980;
         stroke-width: 2;
         filter: drop-shadow(0px 0px 10px #009980);
     }
@@ -492,22 +629,19 @@ header h1:hover {
     font-weight: bold;
 }
 
-/* Main Content */
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: var(--content-padding);
     background-color: #e5e5e5;
     gap: 8rem;
 }
 
 .content-box {
     background-color: #fff;
-    padding: 2rem;
     border-radius: 8px;
-    width: 80%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -579,7 +713,7 @@ main {
   margin-bottom: 0px;
 }
 
-#types .right-text img {
+ .right-text img {
   display: inline-block;
   float: left;
   margin-right: 30px;
@@ -699,8 +833,8 @@ main {
 /****************** DEVELOPMENT ENVIROMENT ***********************/
 .dev-environment-section {
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    height: auto;
     overflow: hidden;
     perspective: 1000px;
 }
@@ -760,84 +894,6 @@ main {
     height: auto;
 }
 
-/**************** Responsive Styling *******************/
-@media (min-width: 600px) {
-    .accordion-button {
-        min-width: 350px; 
-    }
-
-    .accordion-title {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .illustrations {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .svg-container {
-        width: 100%;
-    }    
-    .code-editor {
-        flex-direction: column;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .section-description {
-        font-size: 1rem;
-    }
-}
-
-
-@media (min-width: 800px) {
-    .container {
-        padding: 0;
-    }
-
-    .accordion-item {
-        margin-bottom: 1.5rem;
-    }
-    
-    .accordion-button {
-        min-width: 400px; /* Larger for larger screens */
-    }
-
-    .accordion-title {
-        font-size: 1.2rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        padding: 0 2rem;
-    }
-
-    .title {
-        font-size: 3rem;
-    }
-
-    .description {
-        font-size: 1.25rem;
-    }
-    
-     .accordion-button {
-        min-width: 450px; /* Even larger for extra-large screens */
-    }
-
-    .accordion-title {
-        font-size: 1.3rem;
-    }
-
-    .icon {
-        width: 24px;
-        height: 24px;
-    }
-}
 
 a.main-button {
     font-size: 1.3em;
@@ -914,7 +970,6 @@ button.main-button:hover {
 
 #projects .right-text img {
   display: inline-block;
-  float: left;
   margin-right: 30px;
 }
 
@@ -925,133 +980,13 @@ button.main-button:hover {
   margin-top: 3px;
 }
 
-
-
-
-
-
-/**************** Responsive Styling *******************/
-@media (min-width: 600px) {
-    .accordion-button {
-        min-width: 350px; 
-    }
-
-    .accordion-title {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .illustrations {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .svg-container {
-        width: 100%;
-    }    
-    .code-editor {
-        flex-direction: column;
-    }
-    
-    .section-title {
-        font-size: 2rem;
-    }
-    
-    .section-description {
-        font-size: 1rem;
-    }
+#projects a {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
-@media (min-width: 800px) {
-    .container {
-        padding: 0;
-    }
 
-    .accordion-item {
-        margin-bottom: 1.5rem;
-    }
-    
-    .accordion-button {
-        min-width: 400px; /* Larger for larger screens */
-    }
-
-    .accordion-title {
-        font-size: 1.2rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .container {
-        padding: 0 2rem;
-    }
-
-    .title {
-        font-size: 3rem;
-    }
-
-    .description {
-        font-size: 1.25rem;
-    }
-    
-     .accordion-button {
-        min-width: 450px; /* Even larger for extra-large screens */
-    }
-
-    .accordion-title {
-        font-size: 1.3rem;
-    }
-
-    .icon {
-        width: 24px;
-        height: 24px;
-    }
-}
-@media (max-width: 992px) {
-    .nav {
-        display: none!important; /* Initially hidden on smaller screens */
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        background-color: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        padding: 10px;
-        width: 200px;
-        z-index: 10;
-    }
-
-    .nav.active {
-        display: flex!important; /* Show nav when active */
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .menu-item {
-        font-size: 18px;
-        padding: 10px 0;
-    }
-    
-    footer {
-        padding-top: 0px!important;
-        margin-top: 0px!important;
-    }
-    .contact-form {
-        margin-bottom: 45px;
-    }
-     
-    footer .footer-content {
-        padding: 60px 0px!important;
-    }
-
-    footer .copyright, footer .social, 
-    footer .right-content {
-        text-align: center;
-    }    
-}
   
 footer {
     margin-top: 200px;
