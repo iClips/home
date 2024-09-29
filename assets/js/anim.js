@@ -15,7 +15,9 @@ const callback = (entries, observer) => {
             // Add the 'show' class to animate
             entry.target.classList.add('show');
             // Unobserve the element after it has been shown
-            observer.unobserve(entry.target);
+            // observer.unobserve(entry.target);
+        } else {            
+            entry.target.classList.remove('show');            
         }
     });
 };
