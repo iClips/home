@@ -1,5 +1,16 @@
 :root {
-    --content-padding: 16px 24px; 
+    --theme-color: #007acc;             
+    --theme-color-dark: #005f99;          
+    --theme-color-light: #4db8ff;         
+    --hero-section-background-color: #f4f4f4; 
+    --menu-item-hover-text-color: #0095db; 
+    --tooltip-background-color: rgba(0, 0, 0, 0.8); 
+    --main-button-background-color: #005f99; 
+    --highlight-text-color: #ff5733; 
+    --text-color-light :#1661c9;    
+    --text-color-dark :#072146;    
+    --titlebar-hover-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
 }
 
 * {
@@ -12,7 +23,7 @@ h5 {
 
 h2 em {
     font-style: normal;
-    color: #fba70b;
+    color: var(--highlight-text-color);
 }
 
 a {
@@ -27,7 +38,7 @@ html, body {
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f5f5f5;
-    color: #333;
+    color: var(--text-color-dark);
     width: 100%;
     overflow-x: hidden;
 }
@@ -39,19 +50,19 @@ main, section {
 /* Define the keyframes for the color transition */
 @keyframes colorTransition {
     0% {
-        background-color: #ee837a; /* Red */
+        background-color: #ee837ab3; /* Red */
     }
     25% {
-        background-color: #f3cb55; /* Yellow */
+        background-color: #f3cb55b3; /* Yellow */
     }
     50% {
-        background-color: #5ac878; /* Green */
+        background-color: #5ac878b3; /* Green */
     }
     75% {
-        background-color: #85aeef; /* Blue */
+        background-color: #85aeefb3; /* Blue */
     }
     100% {
-        background-color: #ce736a; /* Red */
+        background-color: #ce736ab3; /* Red */
     }
 }
 
@@ -341,10 +352,10 @@ header h1:hover {
 }
 
 .hero {
-    background: linear-gradient(to right, #4CAF50, #FFC107);
+    background: linear-gradient(to right, var(--theme-color-light), var(--theme-color-dark));
     color: white;
     text-align: center;
-    padding: var(--content-padding);;
+    padding: var(--content-padding);
     position: relative;
     margin-top: 100px;
 }
@@ -583,7 +594,7 @@ main {
   margin-bottom: 0px;
 }
 
- .right-text img {
+.right-text svg, .right-text img {
   display: inline-block;
   float: left;
   margin-right: 30px;
@@ -596,7 +607,59 @@ main {
   margin-top: 3px;
 }
 
+/***************** Link to Portfolio *******************/
+.portfolio-section {
+    position: relative;
+    text-align: center;
+    padding: 60px 20px;
+    color: #fff;
+    background-color: #1e1e1e;
+}
+.portfolio-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.portfolio-content {
+    position: relative;
+    z-index: 1; /* Above the background */
+}
+.portfolio-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #007acc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+.portfolio-link:hover {
+    background-color: #005f99;
+}
 
+/* Animation for the circles */
+@keyframes move {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(10px, -10px); }
+    100% { transform: translate(0, 0); }
+}
+.circle {
+    animation: move 3s infinite ease-in-out;
+}
+
+/* Eclipse position animation */
+@keyframes eclipse {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(-50px, 0); }
+    100% { transform: translate(0, 0); }
+}
+.circle-eclipse {
+    animation: eclipse 5s infinite ease-in-out;
+}
 /*********** ACCORDION **************/
 .accordion-section {
     padding: 1rem;
@@ -652,6 +715,15 @@ main {
     margin: 0;
     flex: 1; /* Allows the title to take up available space */
     text-align: left; /* Aligns text to the left */
+}
+
+.accordion-content {
+    height: 120px;
+    padding: var(--content-padding);
+    color: #fff;
+    background: #221e25;
+    display: none;
+    font-size: 20;
 }
 
 .icon {
@@ -811,15 +883,16 @@ main {
 footer {
     margin-top: 200px;
     padding-top: 120px;
-    background-image: url(../images/footer-bg.png);
+    background-image: url(/assets/images/wave.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     width: 100%;
+    color: var(--text-color-light);
 }
   
 footer .footer-content {
-    padding: 120px 0px;
+    padding: var(--content-padding);
 }
   
 button.main-button {
@@ -829,9 +902,9 @@ button.main-button {
     font-size: 14px;
     border-radius: 25px;
     padding: 15px 25px;
-    background-color: #f4813f;
+    background-color: var(--main-button-background-color);
     text-transform: uppercase;
-    color: #fff;
+    color: var(--text-color-dark);
     font-weight: 600;
     letter-spacing: 1px;
     -webkit-transition: all 0.3s ease 0s;
@@ -841,7 +914,7 @@ button.main-button {
 }
 
 button.main-button:hover {
-    background-color: #f1556a;
+    background-color: var(--titlebar-hover-shadow);
 }
 
 .alert-primary {
@@ -927,16 +1000,16 @@ footer .social {
     gap: 44px;
 }
 
-footer .social li:first-child {
+footer .social:first-child {
     margin-left: 0px;  
 }
 
-footer .social li {
+footer .social {
     margin: 0px 7.5px;
     display: inline-block;
 }
 
-footer .social li a {
+footer .social a {
     color: #fff;
     text-align: center;
     background-color: transparent;
@@ -953,24 +1026,23 @@ footer .social li a {
     transition: all 0.3s ease 0s;
 }
 
-footer .social li a:hover {
+footer .social a:hover {
     background-color: #fba70b;
     border-color: #fba70b;
-    color: #fff;
+    color: var(--menu-item-hover-text-color);
 }
 
 footer .copyright {
     margin-top: 10px;
     font-weight: 400;
     font-size: 15px;
-    color: #4a4a4a;
     letter-spacing: 0.88px;
     text-transform: capitalize;
 }
 
 footer .sub-footer {
     padding: 60px 0px;
-    border-top: 1px solid rgba(250,250,250,0.3);
+    border-top: 1px solid var(--theme-color-light);
     text-align: center;
 }
 
