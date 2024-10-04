@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iClips Tech Team</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>iClips Tech Team</h1>
+    </header>
+
+    <main class="motherboard">
+        <!-- Staff Profiles List -->
+        <section class="staff-profiles">
+            <h2>Meet the Team</h2>
+            <div class="profile-grid">
+                <!-- Each staff profile is represented as a card -->
+                <div class="profile-card">
+                    <div class="profile-header" onclick="toggleProfile(this)">
+                        <img src="images/ClintTheron.jpg" alt="Staff Member Clint Theron" class="profile-img">
+                        <div class="profile-info">
+                            <h3>Clint Theron</h3>
+                            <p>Lead Developer</p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <p>I started Iclips Tech with the goal to solve ANY problem using digital technologies.</p>
+                        <p><strong>Likes:</strong> Seamless technology integration, Simplifying complexities and Implementing solutions</p>
+                        <p><strong>Social:</strong> <a href="#">LinkedIn</a> | <a href="https://github.com/iClips">GitHub</a></p>
+                    </div>
+                </div>
+
+                <div class="profile-card">
+                    <div class="profile-header" onclick="toggleProfile(this)">
+                        <svg class="profile-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" fill="#3498db" />
+                            <text x="50" y="55" font-size="18" text-anchor="middle" fill="#fff">GPT</text>
+                        </svg>
+                        <div class="profile-info">
+                            <h3>ChatGPT</h3>
+                            <p>AI Assistant</p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <p>I am an AI language model designed to assist you with various tasks, from creative writing to coding solutions.</p>
+                        <p><strong>Likes:</strong> Learning, Helping Others, Problem Solving</p>
+                        <p><strong>Social:</strong> <a href="#">LinkedIn</a> | <a href="#">Twitter</a></p>
+                    </div>
+                </div>
+                
+                <div class="profile-card">
+                    <div class="profile-header" onclick="toggleProfile(this)">
+                        <img src="path-to-image" alt="Staff Member 3" class="profile-img">
+                        <div class="profile-info">
+                            <h3>Lyall Van der Linde</h3>
+                            <p>Senior Developer</p>
+                        </div>
+                    </div>
+                    <div class="profile-details">
+                        <p>Lyall assist us in over stacks. He works remotely and is excellent in his field.</p>
+                        <p><strong>Likes:</strong> Design, Walkings and</p>
+                        <p><strong>Social:</strong> <a href="#">LinkedIn</a> | <a href="#">Dribbble</a></p>
+                    </div>
+                </div>
+
+                <!-- Add more staff profiles similarly -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

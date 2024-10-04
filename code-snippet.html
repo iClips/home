@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Snippets in SVG</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #1c1c1e; /* Dark theme color */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: "Fira Code", monospace; /* Coding font */
+    }
+
+    .snippet-container {
+      width: 80vw;
+      height: 80vh;
+      background-color: rgba(28, 28, 30, 0.8); /* Semi-transparent background */
+      border-radius: 15px;
+      position: relative;
+      overflow: hidden;
+      padding: 20px;
+      color: #00ff95; /* Greenish tint common in code editors */
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .code-snippet {
+      position: absolute;
+      font-size: 14px;
+      background-color: rgba(12, 12, 12, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      color: #f5f5f5; /* Light font for good readability */
+      white-space: pre;
+      transition: transform 4s ease-in-out;
+    }
+
+    /* Add animation for the snippets to move in different directions */
+    .move-up {
+      animation: moveUp 5s infinite alternate;
+    }
+
+    .move-left {
+      animation: moveLeft 6s infinite alternate;
+    }
+
+    .move-right {
+      animation: moveRight 7s infinite alternate;
+    }
+
+    /* Animation Keyframes */
+    @keyframes moveUp {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-300px);
+      }
+    }
+
+    @keyframes moveLeft {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-200px);
+      }
+    }
+
+    @keyframes moveRight {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(200px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="snippet-container">
+    <!-- Code snippets moving around -->
+    <div class="code-snippet move-up" style="top: 20px; left: 50px;">
+      <code>
+// Dummy JavaScript code snippet
+class BankAccount {
+  constructor(owner, balance = 0) {
+    this.owner = owner;
+    this.balance = balance;
+  }
+
+  deposit(amount) {
+    console.log(\`Depositing R\${amount.toLocaleString('en-ZA')}\`);
+    this.balance += amount;
+  }
+}
+</code>
+    </div>
+
+    <div class="code-snippet move-left" style="bottom: 50px; right: 80px;">
+      <code>
+const myAccount = new BankAccount("Your Name", 5000);
+myAccount.deposit(10000000);
+console.log(\`Final balance: R\${myAccount.balance.toLocaleString('en-ZA')}\`);
+      </code>
+    </div>
+
+    <div class="code-snippet move-right" style="top: 120px; left: 150px;">
+      <code>
+/* Another code block showing movement */
+function calculateInterest(balance, rate) {
+  return balance * rate / 100;
+}
+console.log(calculateInterest(10000, 5));
+      </code>
+    </div>
+
+  </div>
+
+</body>
+</html>
