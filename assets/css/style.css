@@ -876,29 +876,31 @@ ul li.tag:hover {
 }
 
 /***************** About ******************/
+
 .about-us {
     max-width: 1200px;
-    margin: auto;
+    margin: 80px auto;
     padding: 20px;
     background: linear-gradient(135deg, #eb392188, #2816f267);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: background 0.5s; 
+    transition: background 0.5s;
 }
 
-.about-us.hover-animation {
-    animation: wobble 0.5s infinite alternate;
-    animation-play-state: running; /* Enable wobble animation */
-}
+.illustration {
+    /* display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px; */
 
-.illustrations {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
 
-.illustration {
+.illustrations {
     text-align: center;
     background: #f0f0f0;
     padding: 10px;
@@ -914,6 +916,20 @@ ul li.tag:hover {
 .illustration:hover {
     transform: scale(1.05);
     cursor: pointer;
+}
+
+.svg-icon {
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease;
+}
+
+@keyframes wobble {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+    100% { transform: rotate(0deg); }
 }
 
 .details {

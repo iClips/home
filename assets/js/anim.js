@@ -74,17 +74,17 @@ function calculateDistance(x1, y1, x2, y2) {
 function adjustSpeed(event) {
     const lImg = getCenterCoordinates(document.getElementById('l_img'));
     const rImg = getCenterCoordinates(document.getElementById('r_img'));
-    console.log(`lLogo: ${lImg.centerX},${lImg.centerY} rLogo: ${rImg.centerX},${rImg.centerY}`);
+    
     const mouseX = event.clientX;
     const mouseY = event.clientY;
-    console.log(`mouse: ${mouseX},${mouseY}`);
+    
   
     const distanceToLeftImg = calculateDistance(mouseX, mouseY, lImg.centerX, lImg.centerY);
     const distanceToRightImg = calculateDistance(mouseX, mouseY, rImg.centerX, rImg.centerY);
 
     // Log distances to the console
-    console.log(`Distance to Left Image: ${distanceToLeftImg}`);
-    console.log(`Distance to Right Image: ${distanceToRightImg}`);
+    
+    
     
     const maxDistance = 300; // Adjust this based on your layout
     const minDistance = 0; // Minimum distance to start speeding up
@@ -105,7 +105,7 @@ function adjustSpeed(event) {
     if (distanceToLeftImg < maxDistance) {
         document.getElementById('l_img').style.animationDuration = `${animationDuration/100}s`;
     }
-    console.log(`distanceToLeftImg animationDuration: ${animationDuration}`);
+    
 
     // Calculate animation duration for right logo
     if (distanceToRightImg < maxDistance) {
@@ -115,6 +115,26 @@ function adjustSpeed(event) {
     }
   }
   
-  // Listen for mousemove events to dynamically adjust sparkle speed
-  document.addEventListener('mousemove', adjustSpeed);
+ // Listen for mousemove events to dynamically adjust sparkle speed
+ document.addEventListener('mousemove', adjustSpeed);
   
+const aboutUs = document.querySelector('.about-us');
+const svgIcons = document.querySelectorAll('.svg-icon');
+
+aboutUs.addEventListener('mousemove', (e) => {
+    const { clientX, clientY } = e;
+    const x = (clientX / window.innerWidth) * 20 - 10;
+    const y = (clientY / window.innerHeight) * 20 - 10;
+
+    aboutUs.style.transform = `translate(${x}px, ${y}px) rotate(${x / 10}deg)`;
+    svgIcons.forEach(icon => {
+        icon.style.transform = `rotate(${x / 10}deg)`;
+    });
+});
+
+aboutUs.addEventListener('mouseleave', () => {
+    aboutUs.style.transform = 'translate(0px, 0px) rotate(0deg)';
+    svgIcons.forEach(icon => {
+        icon.style.transform = 'rotate(0deg)';
+    });
+});
