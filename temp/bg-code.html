@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Snippets in SVG</title>
+    <style>
+        html, body {
+            background-color: #1a1a1a;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .background-container {
+            position: relative;
+            width: 100%; 
+            height: 400px; 
+            overflow: hidden;
+        }
+
+        .background-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+        }
+
+        .foreground-content {
+            position: relative;
+            z-index: 1; 
+            padding: 12px 24px; 
+        }
+
+        .snippet-container {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            padding: 12px 24px;
+            color: #00ff95;
+        }
+
+        .code-block {
+            padding: 12px 24px;
+            position: absolute;            
+            border-radius: 8px;
+            color: #ffffff; /* Light font for good readability */
+            white-space: pre;
+        }
+
+        @keyframes move-snippet-1 {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            100% {
+                transform: translate(50px, -30px) rotate(15deg);
+            }
+        }
+
+        
+        /* Different directions for each snippet */
+        @keyframes move-snippet-2 {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            100% {
+                transform: translate(-40px, 30px) rotate(-10deg);
+            }
+        }
+
+        @keyframes move-snippet-3 {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            100% {
+                transform: translate(30px, -50px) rotate(20deg);
+            }
+        }
+
+        @keyframes move-snippet-4 {
+            0% {
+                transform: translate(0, 0) rotate(0);
+            }
+            100% {
+                transform: translate(-30px, 50px) rotate(-25deg);
+            }
+        }
+
+        .move-up {
+            animation: moveUp 2s infinite alternate;
+        }
+
+        .move-left {
+            animation: moveLeft 3s infinite alternate;
+        }
+
+        .move-right {
+            animation: moveRight 4s infinite alternate;
+        }
+
+        .move-down {
+            animation: moveDown 2s infinite alternate;
+        }
+
+        @keyframes moveUp {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-90%);
+            }
+        }
+
+        @keyframes moveDown {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(90%);
+            }
+        }
+
+        @keyframes moveLeft {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(90%);
+            }
+        }
+
+        @keyframes moveRight {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-90%);
+            }
+        }
+    </style>
+</head>
+    <body>
+        <div class="background-container">
+            <div class="background-content">
+                <!-- Any content that you want as the background -->
+                <div class="snippet-container">
+                    <div id="codeBlock1" class="code-block move-up" style="bottom: 10%; left: 40%; font-size: 24px; background-color: rgba(60, 126, 224, 0.687); z-index: 40;"></div>			
+
+                    <div id="codeBlock4" class="code-block move-down" style="top: 10%; right: 40%; font-size: 24px; background-color: rgba(179, 24, 24, 0.726); z-index: 30;"></div>				
+
+                    <div id="codeBlock2" class="code-block move-left" style="bottom: 40%; left: 10%; font-size: 24px; background-color: rgba(11, 206, 11, 0.787); z-index: 20;"></div>				
+
+                    <div id="codeBlock3" class="code-block move-right" style="top: 40%; right: 10%; font-size: 24px; background-color: rgba(23, 87, 226, 0.847); z-index: 10;"></div>				
+                </div>
+            </div>
+            <div class="foreground-content">		
+                
+            </div>
+        </div>
+        <script>
+            const code1 = 
+            `class BankAccount {
+                constructor(owner, balance = 0) {
+                    this.owner = owner;
+                    this.balance = balance;
+                }
+            }`;
+    
+            const code2 = 
+            `const myAccount = new BankAccount("Your Name", 5000);
+            myAccount.deposit(10000000);
+            console.log(\`Final balance: R\${myAccount.balance.toLocaleString('en-ZA')}\`);`;
+
+            const code3 = 
+            `function calculateInterest(balance, rate) {
+                return balance * rate / 100;
+            }
+            console.log(calculateInterest(10000, 5));`;
+
+        const code4 = 
+            `function withdrawMoney(amount) {
+                return amount;
+            }
+            console.log(calculateInterest(amount, 5));`;
+    
+            function typeCode(elementId, code, speed = 50) {
+                const element = document.getElementById(elementId);
+                element.innerHTML = '';
+                let index = 0;
+                
+                function type() {
+                    if (index < code.length) {
+                        element.innerHTML += code[index] === "\n" ? "<br/>" : code[index];
+                        index++;
+                        setTimeout(type, speed);
+                    }
+    
+                }
+    
+                type();
+            }
+    
+            
+            setInterval(() => {
+                typeCode("codeBlock1", code1, 30);
+                typeCode("codeBlock2", code2, 30);
+                typeCode("codeBlock3", code3, 30);
+                typeCode("codeBlock4", code4, 30);
+             }, 7000);
+        </script>
+    </body>    
+</html>
+

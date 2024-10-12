@@ -1,0 +1,105 @@
+<style>
+    .scene {
+        width: 200px; 
+        height: 200px; 
+        perspective: 600px;
+        margin: 0 auto;
+    }
+
+    .cube {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+        animation: rotateCube 10s infinite linear; 
+    }
+
+    .cube div {
+        position: absolute;
+        width: 100%; 
+        height: 100%; 
+        background-image: url('/assets/images/logoc.png'); 
+        background-size: cover; 
+        background-position: center; 
+        border: none; 
+        backface-visibility: hidden; 
+    }
+
+    
+    .cube .front {
+        transform: rotateY(0deg) translateZ(100px);
+    }
+
+    
+    .cube .back {
+        transform: rotateY(180deg) translateZ(100px);
+    }
+
+    
+    .cube .left {
+        transform: rotateY(-90deg) translateZ(100px);
+    }
+
+    
+    .cube .right {
+        transform: rotateY(90deg) translateZ(100px);
+    }
+
+    
+    .cube .top {
+        transform: rotateX(90deg) translateZ(100px);
+    }
+
+    
+    .cube .bottom {
+        transform: rotateX(-90deg) translateZ(100px);
+    }
+
+    
+    @keyframes rotateCube {
+        from {
+            transform: rotateX(-30deg) rotateY(0deg);
+        }
+        to {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+    }
+    
+    .glow-text {
+        text-align: center;
+        color: white;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.9),
+                    0 0 20px rgba(255, 255, 255, 0.9),
+                    0 0 30px rgba(255, 255, 255, 0.9),
+                    0 0 40px rgba(255, 0, 0, 0.9),  
+                    0 0 50px rgba(255, 255, 0, 0.9), 
+                    0 0 60px rgba(0, 255, 0, 0.9);   
+    }
+</style>
+<div class="scene">
+    <div class="cube">
+        <div class="front">
+            <p class="glow-text responsive">Iclips Tech</p>
+        </div>
+  
+        <div class="back">
+            <p class="glow-text responsive">Imagine Tomorrow</p>
+        </div>
+
+        <div class="right">
+            <p class="glow-text responsive">Innovate Together</p>
+        </div>
+
+        <div class="left">
+            <p class="glow-text responsive">Inspire Triumph</p>
+        </div>
+
+        <div class="top">
+            <p class="glow-text responsive">Invent Tools</p>
+        </div>
+
+        <div class="bottom">
+            <p class="glow-text responsive">Improve Technology</p>
+        </div>
+    </div>
+</div>

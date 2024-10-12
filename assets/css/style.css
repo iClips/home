@@ -131,6 +131,7 @@ header h1 {
 
 /**************** Logo - top left *****************/
 .logo {
+    height: 100%;
     padding: var(--padding-box);
     display: flex;
     flex-direction: row;
@@ -139,8 +140,8 @@ header h1 {
 }
 .logo-wrapper-main {
     position: relative;    
-    width: 80px;
-    height: auto;
+    width: auto;
+    height: 100%;
     border-radius: 50%;
     perspective: 800px;
     margin: auto;
@@ -148,8 +149,8 @@ header h1 {
 
 .logo-img {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: auto;
+    height: 100%;
     border-radius: 50%;
     z-index: 1; /* Ensure the logo is above the border */
 }
@@ -164,8 +165,8 @@ header h1 {
     bottom: -4px;
     border-radius: 50%;
     border: 4px solid transparent;
-    background: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue)) border-box;
-    animation: rotateBorder 4s linear infinite;
+    background: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue)) border-box; 
+    animation: rotateBorder 4s linear infinite; 
 }
 
 @keyframes rotateBorder {
@@ -178,7 +179,7 @@ header h1 {
 }
 
 header h1 span {
-    letter-spacing: -4px;
+    letter-spacing: -2px;
 }
 
 .r { color: #EA4335; }  /* Red */
@@ -296,90 +297,6 @@ li.tag:has(a):hover {
 }
 
 /**************** HERO *******************/
-s.background-container {
-    position: relative;
-    width: 100%; /* Adjust as needed */
-    /* height: 100vh; */
-    overflow: hidden; /* Hide overflow from background */
-}
-
-.background-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Ensure it's behind the foreground content */
-}
-
-.foreground-content {
-    position: relative;
-    z-index: 1; 
-    padding: 20px; 
-}
-
-.snippet-container {
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-    padding: 20px;
-    color: #00ff95;
-  }
-
-  .code-block {
-    position: absolute;
-    
-    background-color: rgba(12, 12, 12, 0.9);
-    padding: 10px;
-    border-radius: 8px;
-    color: #babb00; /* Light font for good readability */
-    white-space: pre;
-    transition: transform 2s ease-in-out;
-  }
-
-  /* Add animation for the snippets to move in different directions */
-  .move-up {
-    animation: moveUp 3s infinite alternate;
-  }
-
-  .move-left {
-    animation: moveLeft 4s infinite alternate;
-  }
-
-  .move-right {
-    animation: moveRight 5s infinite alternate;
-  }
-
-  /* Animation Keyframes */
-  @keyframes moveUp {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-400px);
-    }
-  }
-
-  @keyframes moveLeft {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-90%);
-    }
-  }
-
-  @keyframes moveRight {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(90%);
-    }
-}
-
 .div-hero {
     margin: 0;
     padding: 0;
@@ -569,6 +486,11 @@ s.background-container {
     border-radius: 5px;
 }
 
+.center-heading {
+    z-index: 10000;
+    position: relative;
+}
+
 .center-heading h2 {
     text-align: center;
     font-weight: 700;
@@ -751,73 +673,17 @@ main {
     color: #005f99;
 }
 
-  .text p {
-    
+.text p {
     color: #333;
     line-height: 1.5;
-  }
+}
 
-  svg {
+svg {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
+}
 
-  svg:hover {
+svg:hover {
     transform: scale(1.05);
-  }
-
-  /* Animating code snippets to move outward */
-  .code-snippet:nth-child(1) {
-    animation: move-snippet-1 3s infinite alternate ease-in-out;
-  }
-
-  @keyframes move-snippet {
-    0% {
-      transform: translate(0, 0) rotate(0);
-    }
-    100% {
-      transform: translate(50px, -30px) rotate(15deg);
-    }
-  }
-
-  
-  /* Different directions for each snippet */
-  .code-snippet:nth-child(2) {
-    animation: move-snippet-2 3s infinite alternate ease-in-out;
-  }
-
-  @keyframes move-snippet-2 {
-    0% {
-      transform: translate(0, 0) rotate(0);
-    }
-    100% {
-      transform: translate(-40px, 30px) rotate(-10deg);
-    }
-  }
-
-  .code-snippet:nth-child(3) {
-    animation: move-snippet-3 3s infinite alternate ease-in-out;
-  }
-
-  @keyframes move-snippet-3 {
-    0% {
-      transform: translate(0, 0) rotate(0);
-    }
-    100% {
-      transform: translate(30px, -50px) rotate(20deg);
-    }
-  }
-
-  .code-snippet:nth-child(4) {
-    animation: move-snippet-4 3s infinite alternate ease-in-out;
-  }
-
-  @keyframes move-snippet-4 {
-    0% {
-      transform: translate(0, 0) rotate(0);
-    }
-    100% {
-      transform: translate(-30px, 50px) rotate(-25deg);
-    }
 }
 
 @keyframes fade-in {
@@ -839,16 +705,14 @@ main {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-
+  
 .left-image-decor {
   background-image: url(../images/left-bg-decor.png);
   background-repeat: no-repeat;
   position: absolute;
   width: 100%;
   display: inline-block;
-  height: 110%;
-  margin-top: -200px;
-  transform: translateX(-5vw);
+  height: 200%;
 }
 
 #types .left-image {
@@ -968,7 +832,7 @@ ul li.tag:hover {
 .about-us {
     max-width: 1200px;
     margin: 80px auto;
-    padding: 20px;
+    /* padding: 20px; */
     background: linear-gradient(135deg, #eb392188, #2816f267);
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -1129,7 +993,7 @@ ul li.tag:hover {
     height: 120px;
     padding: var(--padding-content);
     color: #fff;
-    background: #3440e8;
+    background: var(--highlight-color);
     display: none;
     
 }
@@ -1435,64 +1299,6 @@ footer .sub-footer p {
     letter-spacing: 0.5px;
 }
 
-/************** 3D Cube *********************/
-.scene {
-    margin: 80px auto;
-    /* width: 300px;
-    height: 300px; */
-    perspective: 800px;
-  }
-
-  .cube {
-    width: 300px;
-    height: 300px;
-    position: relative;
-    /* transform-style: preserve-3d; */
-    transition: transform 0.5s;
-  }
-
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border: 2px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-size: cover;
-    color: #ffffffb3;
-  }
-
-  /* Cube faces */
-.front  { transform: translateZ(150px); background-color: #ff6141;}
-.back   { transform: rotateY(180deg) translateZ(150px); background-color: var(--red-opa);}
-.right  { transform: rotateY(90deg) translateZ(150px); background-color: var(--blue-opa);}
-.left   { transform: rotateY(-90deg) translateZ(150px); background-color: var(--green-opa);}
-.top    { transform: rotateX(90deg) translateZ(150px); background-color: var(--yellow-opa);}
-.bottom { transform: rotateX(-90deg) translateZ(150px); background-color: var(--blue-opa);}
-
-.glow-text {
-    text-align: center;
-    color: white;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8),
-                0 0 20px rgba(255, 255, 255, 0.6),
-                0 0 30px rgba(255, 255, 255, 0.4),
-                0 0 40px rgba(255, 0, 0, 0.8),  /* Red */
-                0 0 50px rgba(255, 255, 0, 0.6), /* Yellow */
-                0 0 60px rgba(0, 255, 0, 0.4);   /* Green */
-}
-
-/* Animation */
-@keyframes rotateCube {
-    from {
-        transform: rotateY(0deg) rotateX(0deg);
-    }
-    to {
-        transform: rotateY(360deg) rotateX(360deg);
-    }
-}
 /**************** Responsive Styling *******************/
 @media (min-width: 600px) {
     .accordion-button {
