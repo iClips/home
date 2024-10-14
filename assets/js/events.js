@@ -201,8 +201,8 @@ function analyzeEvent(event) {
     switch (event.type) {
         case 'click':
             return 'User clicked on the page';
-        case 'mousemove':
-            return 'User moved the mouse';
+        case 'scroll':
+            return 'User scrolled the page';
         case 'keydown':
             return `User pressed the "${event.key}" key`;
         case 'touchstart':
@@ -222,7 +222,7 @@ function generateUniqueId() {
 
 // Event listeners for user interactions
 document.addEventListener('click', logEvent);
-document.addEventListener('mousemove', logEvent);
+document.addEventListener('scroll', logEvent);
     document.addEventListener('keydown', logEvent);
     document.addEventListener('touchstart', logEvent); 
     document.addEventListener('touchmove', logEvent);  
