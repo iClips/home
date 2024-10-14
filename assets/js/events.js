@@ -147,7 +147,7 @@ function animateBackground(event) {
         const tagY = tagRect.top - rect.top; // Y relative to the section
 
         // Check if the <strong> is in the top-left quadrant
-        // console.log(`tag.clientX: ${tag.clientX}, tag.clientY: ${tag.clientY}, x: ${x}, y: ${y}` );
+        console.log(`tagRect.left: ${tagRect.left}, tagRect.top: ${tagRect.top}, x: ${x}, y: ${y}` );
         if (tagRect.left <= x && tagRect.top <= y) {
             tag.style.color = 'var(--accent-color-dark)';
         } else {
@@ -159,14 +159,78 @@ function animateBackground(event) {
     lastY = y;
 }
 
-// Function to remove the animations
 function removeAnimation() {
     aboutUsSection.style.animation = ''; // Reset animation
 }
 
-// Event listeners for mouse and touch events
 aboutUsSection.addEventListener('mousemove', animateBackground);
 aboutUsSection.addEventListener('mouseleave', removeAnimation);
 aboutUsSection.addEventListener('touchmove', animateBackground);
 aboutUsSection.addEventListener('touchend', removeAnimation);
 
+
+/****************** Log Events ********************/
+// Generate a unique session ID
+const sessionId = 'session_' + Date.now();
+
+// Initialize an array to hold user events
+let userEvents = [];
+
+// Function to log an event
+function logEvent(event) {
+    userEvents.push({
+        id: sessionId,
+        type: event.type,
+        timestamp: new Date().toISOString(),
+        details: {
+            clientX: event.clientX || null,
+            clientY: event.clientY || null,
+            key: event.key || null,
+            touchPoints: event.touches ? Array.from(event.touches).map(touch => ({
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            })) : null, 
+            target: event.target.tagName 
+        }
+    });
+}
+
+// Event listeners for user interactions
+document.addEventListener('click', logEvent);
+document.addEventListener('mousemove', logEvent);
+document.addEventListener('keydown', logEvent);
+document.addEventListener('touchstart', logEvent); 
+document.addEventListener('touchmove', logEvent);  
+document.addEventListener('touchend', logEvent);   
+
+// Function to send user events to the server
+function sendEvents() {
+    if (userEvents.length > 0) {
+        const logData = JSON.stringify(userEvents);
+        
+        // Replace 'YOUR_SERVER_ENDPOINT' with your actual server endpoint
+        fetch('./', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: logData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json(); // Parse JSON if the response is okay
+        })
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch(error => {
+            console.error('Error logging events:', error);
+        });
+    }
+}
+
+setInterval(sendEvents, 15 * 1000);
+
+/****************** /Log Events ********************/
