@@ -1,4 +1,39 @@
 const slider = document.getElementById("projectSlider");
+
+/********* Welcome Anim */
+let lastScrollTop = 0;
+let timer = null;
+let hasMoved = false;
+let initialPosition = { top: 100, left: 50 };
+
+const welcome_show = document.getElementById('welcome_show');
+
+function checkMovement() {
+    const currentPosition = {
+    top: slider.offsetTop,
+    left: slider.offsetLeft
+    };
+    return currentPosition.top !== initialPosition.top || currentPosition.left !== initialPosition.left;
+}
+
+// Trigger animation when page is scrolled 100px and slider is stationary for 2 seconds
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+    if (checkMovement()) {
+        hasMoved = true;
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+        if (hasMoved) {
+            welcome_show.classList.remove('responsive');
+            welcome_show.classList.add('show-welcome');
+            hasMoved = false;
+        }
+        }, 2000); // 2 second delay after movement stops
+    }
+    }
+});
+/********* /Welcome Anim */
+
 const progressValue = document.getElementById("progressValue");
 const stages = document.querySelectorAll(".project-stage");
 
@@ -82,7 +117,13 @@ function toggleDetails(index) {
 
     document.getElementById('detail-text').innerText = details[index - 1];
 }
+
+
+
+/******************* ABout US ***********************/
+/******************* /ABout US ***********************/
 const aboutUsSection = document.querySelector('.about-us');
+const strongTags = aboutUsSection.querySelectorAll('strong');
 
 let lastX = 0;
 let lastY = 0;
@@ -100,13 +141,19 @@ function animateBackground(event) {
     const deltaX = x - lastX;
     const deltaY = y - lastY;
 
-    // if (Math.abs(deltaX) > Math.abs(deltaY)) {
-    //     // Horizontal movement
-    //     aboutUsSection.style.animation = 'wobble-side 0.5s infinite alternate';
-    // } else {
-    //     // Vertical movement
-    //     aboutUsSection.style.animation = 'wobble-up 0.5s infinite alternate';
-    // }
+    strongTags.forEach(tag => {
+        const tagRect = tag.getBoundingClientRect();
+        const tagX = tagRect.left - rect.left; // X relative to the section
+        const tagY = tagRect.top - rect.top; // Y relative to the section
+
+        // Check if the <strong> is in the top-left quadrant
+        // console.log(`tag.clientX: ${tag.clientX}, tag.clientY: ${tag.clientY}, x: ${x}, y: ${y}` );
+        if (tagRect.left <= x && tagRect.top <= y) {
+            tag.style.color = 'var(--accent-color-dark)';
+        } else {
+            tag.style.color = ''; // Reset to default
+        }
+    });
 
     lastX = x;
     lastY = y;

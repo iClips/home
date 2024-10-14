@@ -5,8 +5,8 @@
     --theme-color-dark: #006699;         /* Deeper calming blue for balance */
     --theme-color-light: #89dfff;        /* Lighter sky blue for soft highlights */
     
-    --accent-color: #ff6f18;             /* Bold and attractive orange for contrast */
     --accent-color-dark: #cc560f;        /* Darker shade of orange for shadows */
+    --accent-color: #ff6f18;             /* Bold and attractive orange for contrast */
     --accent-color-light: #ffab5f;       /* Soft peach tone for lighter accents */
     
     --neutral-color: #f0f0f0;            /* Clean, user-friendly light grey for backgrounds */
@@ -312,6 +312,33 @@ li.tag:has(a):hover {
 }
 
 /**************** HERO *******************/
+.hero {
+    background: linear-gradient(to right, var(--theme-color-light), var(--theme-color-dark));
+    color: white;
+    text-align: center;
+    padding: var(--content-padding);
+    position: relative;
+    margin-top: 100px;
+}
+
+.hero h1 {
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    margin-bottom: 2rem;
+}
+
+.hero button {
+    padding: 1rem 2rem;
+    background-color: var(--color-btn-bg);
+    border: none;
+    color: #0078d4;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 .div-hero {
     margin: 0;
     padding: 0;
@@ -330,9 +357,63 @@ li.tag:has(a):hover {
     align-items: center;     
 }
 
+
+
+
+
+/****** Intro Welcome Scene **********/
+.div-hero {
+    transition: transform 1s ease-in-out, background-color 1s ease-in-out;
+}
+
+#welcome_show {
+    width: 100%;
+    height: auto;
+    transition: transform 4s ease-in-out, color 4s ease-in-out;
+    padding: 20px;
+    position: relative;
+}
+
+.show-welcome {
+    max-width: 800px;
+    /* font-size: clamp(1.9rem, 2vw + 0.75rem, 2.3rem); */
+    text-shadow: var(--titlebar-hover-shadow);
+    animation: scale-for-event 2.3s ease-in-out forwards, text-glow 2s ease-in-out infinite alternate;
+    transform-origin: center;
+}
+
+  /* Wave animation effect */
+  .wave-effect {
+        animation: wave 4s ease-in-out forwards;
+  }
+
+@keyframes wave {
+    0% { letter-spacing: 0; }
+    50% { letter-spacing: 5px; }
+    100% { letter-spacing: 0; }
+}
+
+@keyframes scale-for-event {
+    0% { 
+        transform: scale(1);
+    }
+    100% { 
+        transform: scale(1.8);
+    }
+}
+
+  
+/******/ Intro Welcome Scene **********/
+
+
+
+
+
+
 #l_img:hover, #r_img:hover {
     animation: flashElement 3s infinite ease-in-out; 
 }
+
 
 
 @keyframes text-glow {
@@ -421,16 +502,21 @@ li.tag:has(a):hover {
 
 @keyframes flashElement {
     0% {
-      opacity: 0.8;
+      opacity: 0.9;
+    }
+    33% {
+        opacity: 0.7;
     }
     50% {
         opacity: 0.4;
     }    
+    66% {
+        opacity: 0.2;
+    }
     100% {
       opacity: 0;
     }  
 }
-
 /******************* Cube 3D **********************/
 .scene {
     width: 200px; 
@@ -511,32 +597,6 @@ li.tag:has(a):hover {
 
 /******************* /Cube 3D **********************/
 
-.hero {
-    background: linear-gradient(to right, var(--theme-color-light), var(--theme-color-dark));
-    color: white;
-    text-align: center;
-    padding: var(--content-padding);
-    position: relative;
-    margin-top: 100px;
-}
-
-.hero h1 {
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    margin-bottom: 2rem;
-}
-
-.hero button {
-    padding: 1rem 2rem;
-    background-color: var(--color-btn-bg);
-    border: none;
-    color: #0078d4;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
 .center-heading {
     z-index: 10000;
@@ -1127,7 +1187,7 @@ ul li.tag:hover {
 
 /************************** Projects ****************************/
 #projects {
-  padding: 100px 0px;
+  padding: var(--content-padding);
 }
 
 #projects .left-image {
