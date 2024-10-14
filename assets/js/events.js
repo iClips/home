@@ -170,14 +170,15 @@ aboutUsSection.addEventListener('touchend', removeAnimation);
 
 
 /****************** Log Events ********************/
-// Generate a unique session ID
-const sessionId = 'session_' + Date.now();
+const sessionId = generateUniqueId();
 
 // Initialize an array to hold user events
 let userEvents = [];
 
 // Function to log an event
 function logEvent(event) {
+    const eventDescription = analyzeEvent(event);
+
     userEvents.push({
         id: sessionId,
         type: event.type,
@@ -190,18 +191,42 @@ function logEvent(event) {
                 clientX: touch.clientX,
                 clientY: touch.clientY
             })) : null, 
-            target: event.target.tagName 
+            target: event.target.tagName,
+            description: eventDescription
         }
     });
+}
+
+function analyzeEvent(event) {
+    switch (event.type) {
+        case 'click':
+            return 'User clicked on the page';
+        case 'mousemove':
+            return 'User moved the mouse';
+        case 'keydown':
+            return `User pressed the "${event.key}" key`;
+        case 'touchstart':
+            return 'User touched the screen';
+        case 'touchmove':
+            return 'User moved a finger on the screen';
+        case 'touchend':
+            return 'User lifted a finger from the screen';
+        default:
+            return 'User performed an unknown action';
+    }
+}
+
+function generateUniqueId() {
+    return 'session-' + Math.random().toString(36).substr(2, 9);
 }
 
 // Event listeners for user interactions
 document.addEventListener('click', logEvent);
 document.addEventListener('mousemove', logEvent);
-document.addEventListener('keydown', logEvent);
-document.addEventListener('touchstart', logEvent); 
-document.addEventListener('touchmove', logEvent);  
-document.addEventListener('touchend', logEvent);   
+    document.addEventListener('keydown', logEvent);
+    document.addEventListener('touchstart', logEvent); 
+    document.addEventListener('touchmove', logEvent);  
+    document.addEventListener('touchend', logEvent);   
 
 // Function to send user events to the server
 function sendEvents() {
@@ -231,6 +256,6 @@ function sendEvents() {
     }
 }
 
-setInterval(sendEvents, 15 * 1000);
+setInterval(sendEvents, 60 * 1000);
 
 /****************** /Log Events ********************/
