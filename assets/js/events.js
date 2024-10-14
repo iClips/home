@@ -78,25 +78,19 @@ document.querySelector('.menu-toggle').addEventListener('click', function() {
 });
 
 const accordions = document.querySelectorAll('.accordion-item');
-console.log('accordion count: ' + accordions.length);
 accordions.forEach(item => {
     const button = item.querySelector('.accordion-button');
     const content = item.querySelector('.accordion-content');
-    console.log('button count: ' + button.length);
     button.addEventListener('click', () => {
-        console.log('clicked ');
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
         
         // Toggle the clicked accordion content only
         if (!isExpanded) {
             button.setAttribute('aria-expanded', 'true');
             content.style.display = 'block';  // Show the clicked content
-            console.log('show content');
-
         } else {
             button.setAttribute('aria-expanded', 'false');
             content.style.display = 'none';  // Hide the clicked content
-            console.log('Hide content');
         }
     });
 });
@@ -147,7 +141,6 @@ function animateBackground(event) {
         const tagY = tagRect.top - rect.top; // Y relative to the section
 
         // Check if the <strong> is in the top-left quadrant
-        console.log(`tagRect.left: ${tagRect.left}, tagRect.top: ${tagRect.top}, x: ${x}, y: ${y}` );
         if (tagRect.left <= x && tagRect.top <= y) {
             tag.style.color = 'var(--accent-color-dark)';
         } else {
@@ -170,16 +163,15 @@ aboutUsSection.addEventListener('touchend', removeAnimation);
 
 
 /****************** Log Events ********************/
-const sessionId = generateUniqueId();
+let sessionId = localStorage.getItem('sessionId') || generateUniqueId();
+localStorage.setItem('sessionId', sessionId); // Store session ID in localStorage
 
-// Initialize an array to hold user events
-let userEvents = [];
+const logFilePath = 'user_events.txt'; // Path to the log file
 
-// Function to log an event
 function logEvent(event) {
     const eventDescription = analyzeEvent(event);
 
-    userEvents.push({
+    const logEntry = {
         id: sessionId,
         type: event.type,
         timestamp: new Date().toISOString(),
@@ -190,13 +182,31 @@ function logEvent(event) {
             touchPoints: event.touches ? Array.from(event.touches).map(touch => ({
                 clientX: touch.clientX,
                 clientY: touch.clientY
-            })) : null, 
+            })) : null,
             target: event.target.tagName,
             description: eventDescription
         }
+    };
+
+    // Send log entry to the server to update the log file
+    fetch(logFilePath, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sessionId: sessionId, logEntry: logEntry }) // Include sessionId
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+    })
+    .catch(error => {
+        console.error('Error logging events:', error);
     });
 }
 
+// Function to analyze the event and return a simple description
 function analyzeEvent(event) {
     switch (event.type) {
         case 'click':
@@ -216,17 +226,18 @@ function analyzeEvent(event) {
     }
 }
 
-function generateUniqueId() {
-    return 'session-' + Math.random().toString(36).substr(2, 9);
-}
-
 // Event listeners for user interactions
 document.addEventListener('click', logEvent);
 document.addEventListener('scroll', logEvent);
-    document.addEventListener('keydown', logEvent);
-    document.addEventListener('touchstart', logEvent); 
-    document.addEventListener('touchmove', logEvent);  
-    document.addEventListener('touchend', logEvent);   
+document.addEventListener('keydown', logEvent);
+document.addEventListener('touchstart', logEvent);
+document.addEventListener('touchmove', logEvent);
+document.addEventListener('touchend', logEvent);
+
+// Function to generate a unique session ID
+function generateUniqueId() {
+    return 'session-' + Math.random().toString(36).substr(2, 9);
+}
 
 // Function to send user events to the server
 function sendEvents() {
