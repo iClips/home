@@ -209,7 +209,7 @@ function sendEvents() {
         const logData = JSON.stringify(userEvents);
         
         // Replace 'YOUR_SERVER_ENDPOINT' with your actual server endpoint
-        fetch('./', {
+        fetch('api/log_user_events.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
