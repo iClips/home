@@ -1,38 +1,10 @@
 const slider = document.getElementById("projectSlider");
 
-/********* Welcome Anim */
-let lastScrollTop = 0;
-let timer = null;
-let hasMoved = false;
-let initialPosition = { top: 100, left: 50 };
-
+/********* Welcome Anim ***********************/
 const welcome_show = document.getElementById('welcome_show');
-
-function checkMovement() {
-    const currentPosition = {
-    top: slider.offsetTop,
-    left: slider.offsetLeft
-    };
-    return currentPosition.top !== initialPosition.top || currentPosition.left !== initialPosition.left;
-}
-
-// Trigger animation when page is scrolled 100px and slider is stationary for 2 seconds
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 100) {
-    if (checkMovement()) {
-        hasMoved = true;
-        clearTimeout(timer);
-        timer = setTimeout(() => {
-        if (hasMoved) {
-            welcome_show.classList.remove('responsive');
-            welcome_show.classList.add('show-welcome');
-            hasMoved = false;
-        }
-        }, 2000); // 2 second delay after movement stops
-    }
-    }
-});
-/********* /Welcome Anim */
+welcome_show.classList.remove('responsive');
+welcome_show.classList.add('show-welcome');
+/****************** /Welcome Anim **********************/
 
 const progressValue = document.getElementById("progressValue");
 const stages = document.querySelectorAll(".project-stage");
@@ -165,7 +137,7 @@ aboutUsSection.addEventListener('touchend', removeAnimation);
 /****************** Log Events ********************/
 let sessionId = localStorage.getItem('sessionId') || generateUniqueId();
 localStorage.setItem('sessionId', sessionId); // Store session ID in localStorage
-
+let isSessionLogging = true;
 const logFilePath = 'user_events.txt'; // Path to the log file
 
 function logEvent(event) {
@@ -198,11 +170,11 @@ function logEvent(event) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            isSessionLogging = false;
         }
     })
     .catch(error => {
-        console.error('Error logging events:', error);
+        isSessionLogging = false;
     });
 }
 
@@ -227,12 +199,26 @@ function analyzeEvent(event) {
 }
 
 // Event listeners for user interactions
-document.addEventListener('click', logEvent);
-document.addEventListener('scroll', logEvent);
-document.addEventListener('keydown', logEvent);
-document.addEventListener('touchstart', logEvent);
-document.addEventListener('touchmove', logEvent);
-document.addEventListener('touchend', logEvent);
+if (isSessionLogging) {
+    document.addEventListener('click', logEvent);
+    document.addEventListener('scroll', logEvent);
+    document.addEventListener('keydown', logEvent);
+    document.addEventListener('touchstart', logEvent);
+    document.addEventListener('touchmove', logEvent);
+    document.addEventListener('touchend', logEvent);
+}
+
+function getDescription(eventType) {
+    const descriptions = {
+        click: "User clicked on the page.",
+        scroll: "User scrolled the page.",
+        keydown: "User pressed a key.",
+        touchstart: 'User touched the screen',
+        touchmove: 'User moved a finger on the screen',
+        touchend: 'User lifted a finger from the screen'
+    };
+    return descriptions[eventType] || "User interacted with the page.";
+}
 
 // Function to generate a unique session ID
 function generateUniqueId() {
@@ -240,9 +226,9 @@ function generateUniqueId() {
 }
 
 // Function to send user events to the server
-function sendEvents() {
-    if (userEvents.length > 0) {
-        const logData = JSON.stringify(userEvents);
+function sendLogToServer(log) {
+    if (log.length > 0) {
+        const logData = JSON.stringify(log);
         
         // Replace 'YOUR_SERVER_ENDPOINT' with your actual server endpoint
         fetch('api/log_user_events.php', {
@@ -250,7 +236,7 @@ function sendEvents() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: logData
+            body: JSON.stringify({ sessionId, log })
         })
         .then(response => {
             if (!response.ok) {
@@ -267,6 +253,11 @@ function sendEvents() {
     }
 }
 
-setInterval(sendEvents, 60 * 1000);
+setInterval(() => {
+    if (userEvents.length > 0) {
+        sendLogToServer(userEvents);
+        userEvents.length = 0; // Clear log after sending
+    }
+}, 180000);
 
 /****************** /Log Events ********************/
