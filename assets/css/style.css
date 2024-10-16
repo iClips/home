@@ -1,5 +1,5 @@
 :root {
-    --titlebar-background: linear-gradient(145deg, #000509b8, #505366b8);    
+    --titlebar-background: #212529;    
     --header-height: 80px;
 
     --theme-color: #00aaff;              /* Vibrant electric blue */
@@ -18,17 +18,19 @@
     --success-color: #00c851;            /* Vibrant green for success notifications */
 
     --hero-section-background-color: #f4f4f4; 
-    --menu-item-hover-text-color: var(--accent-color); 
-    --color-menu-item: #65e083;
-    --tooltip-background-color: rgba(0, 0, 0, 0.8); 
+    --color-menu-item-hover: var(--highlight-color); 
+    --color-menu-item: var(--theme-color-light);
+    --tooltip-background-color: var(--titlebar-background); 
     --highlight-color: #ff6f35; 
     --text-color-light :#1661c9;    
     --text-color-dark :#072146;    
-    --titlebar-hover-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    --titlebar-hover-shadow: 0 4px 10px var(--highlight-color);
+    
     --red-logo-color: #ee837ab3;
     --yellow-logo-color: #f3cb55b3;
     --green-logo-color: #5ac878b3;
     --red-logo-color: #ce736ab3;
+    
     --padding-content: 16px 24px;
     --padding-card: 12px 16px;
     --padding-box: 8px 12px;
@@ -53,12 +55,7 @@
 
     /* Popup */
     --popup-background: rgba(44, 47, 51, 0.95);
-    --popup-content-color: #ffffff;
-    
-    /* Links & Tooltips */
-    --link-color: var(--primary-color);
-    --tooltip-background: #1e1e1e;
-    --tooltip-text-color: #ffffff;
+    --popup-content-color: #ffffff;    
 }
 
 * {
@@ -117,8 +114,18 @@ body {
     overflow-x: hidden;
 }
 
-main, section {
+section {
     width: 100%;
+    padding: var(--padding-content);
+}
+
+main {
+    width: 100%;
+    padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
 
@@ -162,7 +169,7 @@ header:hover {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: var(--content-padding);
+    padding: var(--padding-content);
 }
 
 .nav {
@@ -187,7 +194,7 @@ header:hover {
 }
 
 .nav .menu-item:hover {
-    color: var(--highlight-color);
+    color: var(--color-menu-item-hover);
 }
 
 .menu-toggle {
@@ -321,7 +328,7 @@ li.tag:has(a):hover {
     background: linear-gradient(to right, var(--theme-color-light), var(--theme-color-dark));
     color: white;
     text-align: center;
-    padding: var(--content-padding);
+    padding: var(--padding-content);
     position: relative;
     margin-bottom: 200px;
 }
@@ -352,7 +359,6 @@ li.tag:has(a):hover {
     justify-content: center; /* Center align the content */
     align-items: center;     /* Center align vertically */
     transform: translateY(40px);
-    font-family: sans-serif;
 }
 
 .logo-wrapper {
@@ -524,7 +530,7 @@ li.tag:has(a):hover {
     width: 200px; 
     height: 200px; 
     perspective: 600px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
 .cube {
@@ -532,17 +538,37 @@ li.tag:has(a):hover {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    animation: rotateCube 10s infinite linear; 
+    animation: rotateCube 15s infinite linear;     
+}
+
+.cube .front p, .cube .back p {
+    background-color: #cc580fc4;
+    color: black;
+    font-weight: 600;
+}
+
+.cube .left p, .cube .right p {
+    background-color: #ffab5fc4;
+    color: black;
+    font-weight: 600;
+    
+}
+
+.cube .top p, .cube .bottom p {
+    background-color:  #ff6f18c4;
+    color: black;
+    font-weight: 600;
 }
 
 .cube div {
     position: absolute;
     width: 100%; 
-    height: 100%; 
-    background-image: url('/assets/images/logoc.png'); 
+    height: 100%;
+    background-color: #efd072;
+    background-image: url('/assets/images/logo-it.png'); 
     background-size: cover; 
     background-position: center; 
-    border: none; 
+    border: 3px solid var(--theme-color); 
     backface-visibility: hidden; 
 }
 
@@ -628,40 +654,37 @@ li.tag:has(a):hover {
 
 .slider {
     -webkit-appearance: none;
-    appearance: none;
     width: 100%;
     height: 8px;
-    background: #ddd;
+    background: #0078d4;
     border-radius: 5px;
     outline: none;
     opacity: 0.8;
     transition: opacity 0.2s;
 }
 
-/* Increase the size of the slider knob */
+.slider:hover {
+    opacity: 1;
+}
+
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 30px; /* Larger knob */
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    background: #4285F4; /* Custom color */
+    background: #00ff00;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 .slider::-moz-range-thumb {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
-    background: #4285F4;
+    background: #00ff00;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-}
-
-/* Add a hover effect for the slider knob */
-.slider::-webkit-slider-thumb:hover, .slider::-moz-range-thumb:hover {
-    transform: scale(1.2);  /* Make the knob larger when hovered */
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Instruction note that appears on hover */
@@ -703,7 +726,7 @@ li.tag:has(a):hover {
     border-radius: 10px;
     box-shadow: var(--box-shadow-standard);
     perspective: 1000px;
-    padding: var(--content-padding);
+    padding: var(--padding-content);
     margin: 12px auto;
 }
 
@@ -740,7 +763,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: var(--content-padding);
+    padding: var(--padding-content);
     background-color: #e5e5e5;
     gap: 8rem;
 }
@@ -834,6 +857,17 @@ svg:hover {
   transform: translateX(-100px);
 }
 
+.right-image-decor {
+    background-image: url(../images/right-bg-decor.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    display: inline-block;
+    height: 200%;
+    transform: translateX(100px);
+}
+  
 #types .left-image {
   align-self: center;
 }
@@ -949,10 +983,10 @@ ul li.tag:hover {
 /***************** About ******************/
 
 .about-us {
-    max-width: 1200px;
+    width: 1200px;
+    max-width: 100%;
     margin: 80px auto;
-    height: auto;
-    padding: var(--content-padding);
+    padding: var(--padding-content);
     background: linear-gradient(135deg, var(--theme-color-light), var(--theme-color-dark));
     border-radius: 8px;
     box-shadow: var(--box-shadow-card);
@@ -1170,7 +1204,7 @@ ul li.tag:hover {
 
 /************************** Projects ****************************/
 #projects {
-  padding: var(--content-padding);
+  padding: var(--padding-content);
 }
 
 #projects .left-image {
@@ -1213,13 +1247,13 @@ ul li.tag:hover {
   
 footer {
     margin-top: 200px;
-    padding-top: var(--content-padding);    
+    padding-top: var(--padding-content);    
     width: 100%;
     color: var(--text-color-light);
 }
   
 footer .footer-content {
-    padding: var(--content-padding);
+    padding: var(--padding-content);
     text-align: center;    
     background: linear-gradient(to top left, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, 0.5) 100%);
     overflow: hidden;
@@ -1277,7 +1311,7 @@ footer .social a {
 
 footer .social a:hover {
     border: 2px solid #fba70b;
-    color: var(--menu-item-hover-text-color);
+    color: var(--color-menu-item-hover);
     border-radius: 50%;
     background-color: #fba70b47;
 }

@@ -9,7 +9,12 @@ welcome_show.classList.add('show-welcome');
 const progressValue = document.getElementById("progressValue");
 const stages = document.querySelectorAll(".project-stage");
 
+slider.addEventListener("click", () => {
+    console.log(`Slider clicked`);
+    
+});
 slider.addEventListener("input", () => {
+    console.log(`Slider value: ${this.value}`);
     const value = slider.value;
     let estRand = 0;
     if (value > 0 && value <= 20) {
@@ -135,48 +140,104 @@ aboutUsSection.addEventListener('touchend', removeAnimation);
 
 
 /****************** Log Events ********************/
-let sessionId = localStorage.getItem('sessionId') || generateUniqueId();
-localStorage.setItem('sessionId', sessionId); // Store session ID in localStorage
-let isSessionLogging = true;
-const logFilePath = 'user_events.txt'; // Path to the log file
+// events.js
 
-function logEvent(event) {
-    const eventDescription = analyzeEvent(event);
+// Helper function to get session ID or generate a new one
+function getSessionId() {
+    let sessionId = localStorage.getItem('sessionId');
+    if (!sessionId) {
+        sessionId = `session-${Date.now()}`; // Create a new session ID based on timestamp
+        localStorage.setItem('sessionId', sessionId);
+    }
+    return sessionId;
+}
 
-    const logEntry = {
-        id: sessionId,
-        type: event.type,
-        timestamp: new Date().toISOString(),
-        details: {
-            clientX: event.clientX || null,
-            clientY: event.clientY || null,
-            key: event.key || null,
-            touchPoints: event.touches ? Array.from(event.touches).map(touch => ({
-                clientX: touch.clientX,
-                clientY: touch.clientY
-            })) : null,
-            target: event.target.tagName,
-            description: eventDescription
+// Initialize session variables
+const sessionId = getSessionId();
+let errorCount = 0; // Track errors
+const logEvents = [];
+
+// Helper to log events
+function logEvent(type, details = {}) {
+    const timestamp = new Date().toISOString();
+    const eventLog = { sessionId, timestamp, type, details };
+    logEvents.push(eventLog);
+
+    // If error occurs twice, stop logging
+    if (type === 'error') {
+        errorCount++;
+        if (errorCount >= 2) {
+            console.error('Error occurred twice. Stopping logging for this session.');
+            return;
         }
+    }
+}
+
+// Send logs to server and save in the appropriate session log file
+function sendLogToServer() {
+    const logData = {
+        sessionId,
+        logEvents
     };
 
-    // Send log entry to the server to update the log file
-    fetch(logFilePath, {
+    fetch('/api/session-logs/save-log', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ sessionId: sessionId, logEntry: logEntry }) // Include sessionId
+        body: JSON.stringify(logData),
     })
-    .then(response => {
-        if (!response.ok) {
-            isSessionLogging = false;
-        }
-    })
-    .catch(error => {
-        isSessionLogging = false;
+        .then(response => response.json())
+        .then(data => {
+            console.log('Log successfully sent to the server:', data);
+        })
+        .catch(error => {
+            console.error('Failed to send log to server:', error);
+            logEvent('error', { message: error.message });
+        });
+}
+
+// Track title bar menu button clicks
+const menuButtons = document.querySelectorAll('.menu-button');
+menuButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+        logEvent('menu-click', { buttonId: e.target.id });
+    });
+});
+
+// Track slider interactions
+const projectSlider = document.getElementById('projectSlider');
+if (projectSlider) {
+    projectSlider.addEventListener('input', (e) => {
+        logEvent('slider-move', { value: e.target.value });
     });
 }
+
+// Track link and button clicks
+document.querySelectorAll('a, button').forEach(element => {
+    element.addEventListener('click', (e) => {
+        logEvent('click', { elementType: e.target.tagName, elementId: e.target.id });
+    });
+});
+
+// Save logs when the user leaves the page
+window.addEventListener('beforeunload', () => {
+    if (logEvents.length > 0) {
+        sendLogToServer(); // Send the log before the user exits
+    }
+});
+
+// Function to log errors
+window.onerror = function (message, source, lineno, colno, error) {
+    logEvent('error', {
+        message: message,
+        source: source,
+        line: lineno,
+        column: colno,
+        error: error ? error.toString() : 'N/A'
+    });
+};
+
 
 // Function to analyze the event and return a simple description
 function analyzeEvent(event) {
@@ -197,67 +258,5 @@ function analyzeEvent(event) {
             return 'User performed an unknown action';
     }
 }
-
-// Event listeners for user interactions
-if (isSessionLogging) {
-    document.addEventListener('click', logEvent);
-    document.addEventListener('scroll', logEvent);
-    document.addEventListener('keydown', logEvent);
-    document.addEventListener('touchstart', logEvent);
-    document.addEventListener('touchmove', logEvent);
-    document.addEventListener('touchend', logEvent);
-}
-
-function getDescription(eventType) {
-    const descriptions = {
-        click: "User clicked on the page.",
-        scroll: "User scrolled the page.",
-        keydown: "User pressed a key.",
-        touchstart: 'User touched the screen',
-        touchmove: 'User moved a finger on the screen',
-        touchend: 'User lifted a finger from the screen'
-    };
-    return descriptions[eventType] || "User interacted with the page.";
-}
-
-// Function to generate a unique session ID
-function generateUniqueId() {
-    return 'session-' + Math.random().toString(36).substr(2, 9);
-}
-
-// Function to send user events to the server
-function sendLogToServer(log) {
-    if (log.length > 0) {
-        const logData = JSON.stringify(log);
-        
-        // Replace 'YOUR_SERVER_ENDPOINT' with your actual server endpoint
-        fetch('api/log_user_events.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ sessionId, log })
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json(); // Parse JSON if the response is okay
-        })
-        .then(data => {
-            console.log('Success:', data);
-        })
-        .catch(error => {
-            console.error('Error logging events:', error);
-        });
-    }
-}
-
-setInterval(() => {
-    if (userEvents.length > 0) {
-        sendLogToServer(userEvents);
-        userEvents.length = 0; // Clear log after sending
-    }
-}, 180000);
 
 /****************** /Log Events ********************/
