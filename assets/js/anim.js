@@ -44,12 +44,8 @@ function calculateDistance(x1, y1, x2, y2) {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
 
-// Function to calculate the distance between two points
-function calculateDistance(x1, y1, x2, y2) {
-    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-  }
   
-  function getCenterCoordinates(element) {
+function getCenterCoordinates(element) {
     const rect = element.getBoundingClientRect(); // Get the element's bounding rectangle
 
     // Calculate the center coordinates
@@ -57,18 +53,6 @@ function calculateDistance(x1, y1, x2, y2) {
     const centerY = rect.top + rect.height / 2; // Y coordinate of the center
 
     return { centerX, centerY };
-}
-
-function getCenterCoordinates(element) {
-    const rect = element.getBoundingClientRect(); // Get the element's bounding rectangle
-    const centerX = rect.left + rect.width / 2; // X coordinate of the center
-    const centerY = rect.top + rect.height / 2; // Y coordinate of the center
-    return { centerX, centerY };
-}
-
-// Function to calculate the distance between two points
-function calculateDistance(x1, y1, x2, y2) {
-    return Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 }
 
 function adjustSpeed(event) {
