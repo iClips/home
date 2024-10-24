@@ -1,6 +1,6 @@
 :root {
     --theme-dark: #1e1e1e;
-    --titlebar-background: #1e1e1ed7;    
+    --titlebar-background: rgba(0, 0, 0, 0.75);  
     --header-height: 80px;
 
     --theme-color: #00aaff;
@@ -72,9 +72,13 @@ a {
 }
 
 h1.responsive {
-    font-size: clamp(2rem, 2.2vw + 1rem, 4rem);
+    font-size: clamp(2rem, 2.2vw + 0.85rem, 3.8rem);
 }
-
+@media (max-width: 100vh) { 
+    h1.responsive {
+        font-size: clamp(10px, 1vh + 0.8rem, 40px);
+    }
+}
 h2.responsive {
     font-size: clamp(1.75rem, 2vw + 0.75rem, 3.5rem); /* Relative to h1 */
 }
@@ -200,7 +204,8 @@ header:hover {
     cursor: pointer;
 }
 
-/***************************************** Logo **********/
+/***************************************** Logo ***************************/
+
 .main-nav .logo-wrapper {
     position: relative;
     width: auto;
@@ -221,21 +226,28 @@ header:hover {
     z-index: 1;
 }
 
-/* .main-nav .logo-border {
+.main-nav .logo-border {
+    position: relative; /* Added to contain the absolute ::before */
     height: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the logo */
 }
+
 .main-nav .logo-border::before {
     content: '';
     position: absolute;
-    top: -5px;
-    left: -4px;
-    bottom: -4px;
-    right: -4px;
-    height: 93px;
-    width: 93px;
+    top: -2px;
+    left: -2px;
+    bottom: 0;
+    right: 0;
     border-radius: 50%;
-    background: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue)) border-box; 
-    animation: rotateBorder 6.0s linear infinite; 
+    border: 4px solid transparent; /* Creates space for the gradient */
+    background: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue)) border-box;
+    animation: rotateBorder 1.0s linear infinite;
+    z-index: 0;
+    /* padding: 4px; Adjust this to fine-tune spacing */
 }
 
 @keyframes rotateBorder {
@@ -246,7 +258,8 @@ header:hover {
         transform: rotate(360deg);
     }
 }
-*/
+
+
 
 .r { color: var(--red); }  /* Red */
 .b { color: var(--blue); }  /* Blue */
@@ -284,7 +297,6 @@ header:hover {
         line-height: 0;
     }  
 }
-/***************************************** /Logo */
 
 /************** /Header / Titlebar **********************/
 
@@ -334,7 +346,6 @@ li.tag:has(a):hover {
     text-align: center;
     padding: var(--padding-content);
     position: relative;
-    margin-bottom: 200px;
 }
 
 .hero h1 {
@@ -384,37 +395,14 @@ li.tag:has(a):hover {
 #welcome_show {
     width: 100%;
     height: auto;
-    transition: transform 4s ease-in-out, color 4s ease-in-out;
-    padding: 20px;
+    transition: transform 2.3s ease-in-out, color 0.4s ease-in-out;
+    margin: 40px auto;
     position: relative;    
 }
 
 .show-welcome {
-    max-width: 800px;
-    /* font-size: clamp(1.9rem, 2vw + 0.75rem, 2.3rem); */
     text-shadow: var(--titlebar-hover-shadow);
-    animation: scale-for-event 2.3s ease-in-out forwards, text-glow 2s ease-in-out infinite alternate;
-    transform-origin: center;
-}
-
-  /* Wave animation effect */
-  .wave-effect {
-        animation: wave 4s ease-in-out forwards;
-  }
-
-@keyframes wave {
-    0% { letter-spacing: 0; }
-    50% { letter-spacing: 5px; }
-    100% { letter-spacing: 0; }
-}
-
-@keyframes scale-for-event {
-    0% { 
-        transform: scale(1);
-    }
-    100% { 
-        transform: scale(1.8);
-    }
+    max-width: 100%;
 }
 
   
@@ -750,11 +738,14 @@ li.tag:has(a):hover {
     display: block;
 }
 
-.app-link:hover, 
-.app-link:active {
+.app-link {
+    cursor: pointer;
+}
+
+/* .app-link:hover {
     font-weight: 600;
     text-shadow: var(--box-shadow-highlight);    
-} 
+}  */
 
 .project-demo {
     position: relative;
@@ -787,6 +778,11 @@ li.tag:has(a):hover {
     left: 0;
     transition: transform 1s ease, opacity 0.5s ease;
     opacity: 0;
+    z-index: 10000;
+}
+
+.project-stage svg {
+    z-index: 10000;
 }
 
 .slider-indicator {
@@ -885,13 +881,15 @@ svg:hover {
 }
   
 .left-image-decor {
-  background-image: url(../images/left-bg-decor.png);
-  background-repeat: no-repeat;
-  position: absolute;
-  width: 100%;
-  display: inline-block;
-  height: 200%;
-  transform: translateX(-100px);
+    background-image: url(../images/left-bg-decor.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 200%;
+    display: inline-block;
+    transform: translateX(-200px);
 }
 
 .right-image-decor {
@@ -899,10 +897,11 @@ svg:hover {
     background-repeat: no-repeat;
     position: absolute;
     right: 0;
+    top: 0;
     width: 100%;
-    display: inline-block;
     height: 200%;
-    transform: translateX(100px);
+    display: inline-block;
+    transform: translateX(200px);
 }
   
 #types .left-image {
@@ -918,12 +917,12 @@ ul li.tag {
   display: inline-block;
   margin-bottom: 60px;
   border-radius: 12px;
-  box-shadow: var(--box-shadow-card);
+  box-shadow: var(--box-shadow-standard);
   padding: var(--padding-card);
 }
 
 ul li.tag:hover {
-  box-shadow: var(--box-shadow-standard);
+  box-shadow: var(--box-shadow-highlight);
 }
 
 #types .right-text ul li:last-child {
@@ -944,6 +943,9 @@ ul li.tag:hover {
 }
 
 /***************** Link to Team *******************/
+
+/* Updated CSS for team section */
+
 .team-section {
     position: relative;
     text-align: center;
@@ -970,7 +972,6 @@ ul li.tag:hover {
     border-radius: 5px;
     text-decoration: none;
     color: #fff;
-    
     transition: background-color 0.3s;
 }
 .team-link:hover {
@@ -978,7 +979,6 @@ ul li.tag:hover {
 }
 
 /* Animations for teamwork representation */
-/* Central node pulse */
 @keyframes pulse {
     0% { r: 80; opacity: 0.3; }
     50% { r: 90; opacity: 0.1; }
@@ -988,34 +988,30 @@ ul li.tag:hover {
     animation: pulse 3s infinite ease-in-out;
 }
 
-/* Connection lines pulsating */
-@keyframes pulse-line {
-    0%, 100% { stroke-width: 2; opacity: 0.4; }
-    50% { stroke-width: 4; opacity: 0.8; }
-}
-.connection {
-    animation: pulse-line 5s infinite ease-in-out;
-}
-
-/* Nodes moving and representing team members */
-@keyframes move-node {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(10px, -10px); }
-    100% { transform: translate(0, 0); }
-}
-.small-node {
-    animation: move-node 4s infinite ease-in-out;
+/* Orbiting nodes animation */
+@keyframes orbit {
+    0% { transform: rotate(0deg) translateX(350px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(350px) rotate(-360deg); }
 }
 
 /* Eclipse position animation */
 @keyframes eclipse {
-    0% { transform: translate(0, 0); }
-    50% { transform: translate(-50px, 0); }
-    100% { transform: translate(0, 0); }
+    0%, 90% { transform: rotate(0deg); }
+    95%, 100% { transform: rotate(0deg) translateX(0); } /* Eclipse alignment */
 }
-.circle-eclipse {
-    animation: eclipse 5s infinite ease-in-out;
+
+/* Individual nodes representing team members orbiting around the central node */
+.small-node {
+    animation: orbit 10s infinite linear, eclipse 30s infinite ease-in-out;
+    transform-origin: 400px 100px; /* Origin at the central node */
+    r: 25px;
+    fill: rgba(255, 255, 255, 0.2);
 }
+
+.small-node:nth-child(1) { animation-delay: 0s; }
+.small-node:nth-child(2) { animation-delay: 2.5s; }
+.small-node:nth-child(3) { animation-delay: 5s; }
+.small-node:nth-child(4) { animation-delay: 7.5s; }
 
 /***************** About ******************/
 
@@ -1447,4 +1443,86 @@ body {
     background-color: var(--neutral-color);
     color: var(--neutral-color-dark);
 }
-/**************************************/FUN**************************************/
+
+/*********************** Modal Styles ************************/
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease; /* Transition for overlay opacity */
+}
+
+.modal-overlay.show-modal {
+    display: flex;
+    opacity: 1;
+}
+
+.budget-modal {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative;
+    transform: scale(0.8); /* Initial scale */
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transition for modal scale and opacity */
+}
+
+.budget-modal.show-modal {
+    transform: scale(1); /* Final scale */
+    opacity: 1;
+}
+
+.budget-modal h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.budget-modal p {
+    font-size: 16px;
+    color: #555;
+    margin: 20px 0;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.budget-modal button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #0078d4;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.budget-modal button:hover {
+    background-color: #005bb5;
+}
+
+/********************** /Modal ************************/

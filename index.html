@@ -21,6 +21,7 @@
 </script>
 
 <body>
+	
 	<header>
 		<nav class="main-nav">
 			<div class="logo-wrapper">
@@ -52,15 +53,20 @@
 		</nav>
 	</header>
 
-
+    <!-- Modal Structure -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="budget-modal">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2 id="modal-heading"></h2>
+            <p id="modal-description"></p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
 	<section id="welcome" class="hero">
-		<div class="spacer-for-scroll"></div>
-		<div class="div-hero">
-			<h1 class="tag slide-in-top">Designed-to-Suit Apps for Every Need, and Every Budget</h1>
-
-			<p id="welcome_show" class="tag slide-in-bottom">Welcome to our world of personalized digital solutions!
-				Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features,
-				we have something for everyone.</p>
+		<div class="spacer-for-scroll"></div>	
+	
+		<div class="div-hero">			
+			<h2 id="welcome_show" class="tag slide-in-bottom responsive">Welcome to our world of personalized digital solutions! Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.</h2>
 
 			<div class="slider-container">
 				<div class="instruction-note">Move the slider to estimate what you can expect within your budget.</div>
@@ -74,9 +80,8 @@
 				<!-- Multiple stages of the project -->
 
 				<!-- Stage 1: Basic Layout -->
-				<div class="project-stage active" id="stage-1">
+				<div class="project-stage active" id="stage-1" onclick="openModal('Basic Package - Entry Level', 'Price: 2000 Rand Project Stage:  Essential Setup Description: This package provides a foundational web presence. It includes a simple yet effective design with essential elements to get your project started. You\'ll have: Header: Featuring your logo and main navigation links (Home, About, Contact). Content Block: A dedicated space for your primary message or offerings. Footer: A clean section for copyright  information and contact details. Deliverables: Logo placement Basic content structure Navigation setup Responsive layout')">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
-						<!-- Header -->
 						<!-- Header with Logo and Menu -->
 						<rect x="100" y="50" width="600" height="80" fill="#333" />
 
@@ -94,8 +99,6 @@
 						<text x="600" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
 						<text x="700" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
 
-
-						<!-- Website Content Block -->
 						<!-- Website Content Block -->
 						<rect x="100" y="150" width="600" height="300" fill="#0078d4" />
 						<text x="400" y="300" fill="white" font-size="20" text-anchor="middle">Website Content</text>
@@ -133,24 +136,8 @@
 						<!-- Footer -->
 						<rect x="100" y="460" width="600" height="30" fill="#333" />
 						<text x="400" y="480" fill="white" font-size="15" text-anchor="middle">Footer</text>
+						
 					</svg>
-					<div class="details">
-						1. Basic Package - Entry Level
-							Price: 2000 Rand
-							Project Stage: Essential Setup
-							Description:
-							This package provides a foundational web presence. It includes a simple yet effective design with essential elements to get your project started. You'll have:
-
-							Header: Featuring your logo and main navigation links (Home, About, Contact).
-							Content Block: A dedicated space for your primary message or offerings.
-							Footer: A clean section for copyright information and contact details.
-							Deliverables:
-
-							Logo placement
-							Basic content structure
-							Navigation setup
-							Responsive layout
-					</div>
 				</div>
 
 				<!-- Stage 2: Social Links and Pages -->
@@ -371,7 +358,7 @@
 			</div>
 		</div>
 	</section>
-
+	
 	<main>
 
 		<section id="about" class="about-us">
@@ -505,7 +492,7 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-12 col-md-6 col-lg-5">
+					<div class="col-12 col-md-6">
 						<div class="d-flex align-items-center justify-content-center" style="height: 100%;">
 							<div class="scene">
 								<div class="cube">
@@ -537,7 +524,7 @@
 						</div>
 					</div>
 
-					<div class="right-text col-12 col-md-6 col-lg-7 mobile-bottom-fix">
+					<div class="right-text col-12 col-md-6">
 						<ul>
 							<li class="tag slide-in-right">
 								<svg width="100" height="100" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
@@ -722,10 +709,9 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="right-text offset-lg-1 col-lg-6 col-md-12 col-sm-12 mobile-bottom-fix">
+					<div class="right-text col-12 col-md-6">
 						<ul>
-							<li class="tag slide-in-right"
-								data-scroll-reveal="enter right move 30px over 0.6s after 0.4s">
+							<li class="tag slide-in-right">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
 									<path d="M50 15 C40 10, 20 25, 35 45 S65 45, 80 25 C60 10, 60 10, 50 15"
 										fill="#6d391b" />
@@ -871,51 +857,44 @@
 
 						</ul>
 					</div>
-					<div class="left-image col-lg-5 col-md-12 col-sm-12 mobile-bottom-fix-big"
-						data-scroll-reveal="enter left move 30px over 0.6s after 0.4s">
-						<div class="right-image-decor"></div>
+					<div class="col-12 col-md-6">						
 						<img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
-
 					</div>
 				</div>
 			</div>
 		</section>
 
 		<section class="team-section">
-			<svg class="team-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%"
-				height="400px">
+			<svg class="team-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="400px">
 				<defs>
 					<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
 						<stop offset="0%" style="stop-color:#007acc8c; stop-opacity:1" />
 						<stop offset="100%" style="stop-color:#005f998c; stop-opacity:1" />
 					</linearGradient>
 				</defs>
+		
 				<!-- Background Gradient -->
 				<rect width="100%" height="100%" fill="url(#gradient)" />
-
+		
 				<!-- Central Teamwork Circle (represents unity) -->
 				<circle class="team-node" cx="400" cy="100" r="80" fill="rgba(255, 255, 255, 0.1)" />
-
+		
 				<!-- Dynamic Connections (lines representing collaboration) -->
-				<line class="connection" x1="400" y1="100" x2="750" y2="200" stroke="rgba(255, 255, 255, 0.4)"
-					stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="50" y2="200" stroke="rgba(255, 255, 255, 0.4)"
-					stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="750" y2="400" stroke="rgba(255, 255, 255, 0.4)"
-					stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="100" y2="400" stroke="rgba(255, 255, 255, 0.4)"
-					stroke-width="2" />
-
-				<!-- Moving Circles (representing individuals within the team) -->
-				<circle class="small-node" cx="750" cy="200" r="25" fill="rgba(255, 255, 255, 0.2)" />
-				<circle class="small-node" cx="50" cy="200" r="25" fill="rgba(255, 255, 255, 0.2)" />
-				<circle class="small-node" cx="750" cy="400" r="25" fill="rgba(255, 255, 255, 0.2)" />
-				<circle class="small-node" cx="100" cy="400" r="25" fill="rgba(255, 255, 255, 0.2)" />
+				<line class="connection" x1="400" y1="100" x2="750" y2="200" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+				<line class="connection" x1="400" y1="100" x2="50" y2="200" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+				<line class="connection" x1="400" y1="100" x2="750" y2="400" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+				<line class="connection" x1="400" y1="100" x2="100" y2="400" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
+		
+				<!-- Orbiting Circles (representing individuals within the team) -->
+				<circle class="small-node" cx="750" cy="200" r="25" />
+				<circle class="small-node" cx="50" cy="200" r="25" />
+				<circle class="small-node" cx="750" cy="400" r="25" />
+				<circle class="small-node" cx="100" cy="400" r="25" />
 			</svg>
-
+		
 			<div class="team-content">
 				<h2 class="responsive">Meet our <em>Team</em></h2>
-				<p class="responsive"></p>
+				<p class="responsive">Our amazing team is represented here, constantly collaborating and evolving together.</p>
 				<a href="team/" class="team-link responsive">View Team</a>
 			</div>
 		</section>
@@ -1163,6 +1142,7 @@
 	<script src="assets/js/anim.js"></script>
 	<script src="assets/js/events.js" defer></script>
 	<script src="assets/js/cube-scene.js" defer></script>
+	<script src="assets/js/script.js" defer></script>
 
 </body>
 

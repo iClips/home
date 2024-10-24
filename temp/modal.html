@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example with Transitions</title>
+    <style>
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease; /* Transition for overlay opacity */
+        }
+
+        .modal-overlay.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal {
+            background-color: #fff;
+            border-radius: 8px;
+            width: 400px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            transform: scale(0.8); /* Initial scale */
+            opacity: 0;
+            transition: all 0.3s ease; /* Transition for modal scale and opacity */
+        }
+
+        .modal.show {
+            transform: scale(1); /* Final scale */
+            opacity: 1;
+        }
+
+        .modal h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .modal p {
+            font-size: 16px;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .modal button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #0078d4;
+            color: white;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .modal button:hover {
+            background-color: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="openModal('Sample Heading', 'This is a description of the modal content.')">Open Modal</button>
+
+    <!-- Modal Structure -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+            <h2 id="modal-heading"></h2>
+            <p id="modal-description"></p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(heading, description) {
+            const overlay = document.getElementById('modal-overlay');
+            const modal = overlay.querySelector('.modal');
+
+            // Reset the display to flex when reopening the modal
+            overlay.style.display = 'flex';
+
+            // Set heading and description in modal
+            document.getElementById('modal-heading').textContent = heading;
+            document.getElementById('modal-description').textContent = description;
+
+            // Show modal with transitions
+            setTimeout(() => {
+                overlay.classList.add('show');
+                modal.classList.add('show');
+            }, 10); // Small delay to allow the display to update
+        }
+
+        function closeModal() {
+            const overlay = document.getElementById('modal-overlay');
+            const modal = overlay.querySelector('.modal');
+
+            // Remove 'show' class to trigger close animation
+            modal.classList.remove('show');
+            overlay.classList.remove('show');
+
+            // Wait for the animation to finish before fully hiding the modal
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 400); // Match this duration with CSS transition time
+        }
+    </script>
+</body>
+</html>
