@@ -1,20 +1,22 @@
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('preloader').style.display = 'none';
+    
+    /********* Welcome Anim ***********************/
+    const welcome_show = document.getElementById('welcome_show');
+    welcome_show.classList.remove('responsive');
+    welcome_show.classList.add('show-welcome');
+    /****************** /Welcome Anim **********************/
+});
+
 const slider = document.getElementById("projectSlider");
 
-/********* Welcome Anim ***********************/
-const welcome_show = document.getElementById('welcome_show');
-welcome_show.classList.remove('responsive');
-welcome_show.classList.add('show-welcome');
-/****************** /Welcome Anim **********************/
 
 const progressValue = document.getElementById("progressValue");
 const stages = document.querySelectorAll(".project-stage");
 
-slider.addEventListener("click", () => {
-    console.log(`Slider clicked`);
-    
-});
 slider.addEventListener("input", () => {
-    console.log(`Slider value: ${this.value}`);
+    if (this.value) return;
+    
     const value = slider.value;
     let estRand = 0;
     if (value > 0 && value <= 20) {
@@ -55,22 +57,27 @@ document.querySelector('.menu-toggle').addEventListener('click', function() {
 });
 
 const accordions = document.querySelectorAll('.accordion-item');
+
 accordions.forEach(item => {
     const button = item.querySelector('.accordion-button');
     const content = item.querySelector('.accordion-content');
+    const indicator = button.querySelector('.indicator');
+
     button.addEventListener('click', () => {
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
         
-        // Toggle the clicked accordion content only
         if (!isExpanded) {
             button.setAttribute('aria-expanded', 'true');
-            content.style.display = 'block';  // Show the clicked content
+            content.classList.add('show');  // Show with transition
+            indicator.style.transform = 'rotate(180deg)'; // Arrow rotation
         } else {
             button.setAttribute('aria-expanded', 'false');
-            content.style.display = 'none';  // Hide the clicked content
+            content.classList.remove('show');  // Hide with transition
+            indicator.style.transform = 'rotate(0deg)'; // Reset arrow
         }
     });
 });
+
 
 function toggleDetails(index) {
     const details = [
@@ -99,29 +106,23 @@ const strongTags = aboutUsSection.querySelectorAll('strong');
 let lastX = 0;
 let lastY = 0;
 
-// Function to handle the hover/touch effect
 function animateBackground(event) {
     const rect = aboutUsSection.getBoundingClientRect();
-    const x = event.clientX - rect.left; // X position relative to the element
-    const y = event.clientY - rect.top; // Y position relative to the element
+    const x = event.clientX - rect.left; 
+    const y = event.clientY - rect.top; 
 
-    // Set the background based on mouse position
     aboutUsSection.style.backgroundPosition = `${x}px ${y}px`;
 
-    // Determine direction of movement
     const deltaX = x - lastX;
     const deltaY = y - lastY;
 
     strongTags.forEach(tag => {
         const tagRect = tag.getBoundingClientRect();
-        const tagX = tagRect.left - rect.left; // X relative to the section
-        const tagY = tagRect.top - rect.top; // Y relative to the section
-
-        // Check if the <strong> is in the top-left quadrant
-        if (tagRect.left <= x && tagRect.top <= y) {
+        
+        if (tagRect.left <= x && tagRect.right <= x && tagRect.top <= y) {
             tag.style.color = 'var(--accent-color-dark)';
         } else {
-            tag.style.color = ''; // Reset to default
+            tag.style.color = ''; 
         }
     });
 
@@ -135,8 +136,12 @@ function removeAnimation() {
 
 aboutUsSection.addEventListener('mousemove', animateBackground);
 aboutUsSection.addEventListener('mouseleave', removeAnimation);
-aboutUsSection.addEventListener('touchmove', animateBackground);
-aboutUsSection.addEventListener('touchend', removeAnimation);
+aboutUsSection.addEventListener('touchmove', (e) => {
+    animateBackground();
+}, { passive: true });
+aboutUsSection.addEventListener('touchend', (e) => {
+    removeAnimation();
+}, { passive: true });
 
 
 /****************** Log Events ********************/

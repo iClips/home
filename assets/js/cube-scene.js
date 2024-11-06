@@ -36,7 +36,7 @@ scene.addEventListener('touchstart', (e) => {
     isDragging = true;
     startX = e.touches[0].clientX;
     startY = e.touches[0].clientY;
-});
+}, { passive: true });
 
 scene.addEventListener('touchmove', (e) => {
     if (isDragging) {
@@ -51,8 +51,8 @@ scene.addEventListener('touchmove', (e) => {
         startX = e.touches[0].clientX;
         startY = e.touches[0].clientY;
     }
-});
+}, { passive: true });
 
 scene.addEventListener('touchend', () => {
     isDragging = false;
-});
+}, { passive: true });

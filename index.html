@@ -21,7 +21,13 @@
 </script>
 
 <body>
-	
+	<div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
 	<header>
 		<nav class="main-nav">
 			<div class="logo-wrapper">
@@ -72,7 +78,7 @@
 				<div class="instruction-note">Move the slider to estimate what you can expect within your budget.</div>
 				<input type="range" min="0" max="100" value="20" step="20" class="slider" id="projectSlider">
 				<div class="slider-indicator">
-					<h3>Budget: <span id="progressValue">2000</span> ZAR</h3>
+					<h3 class="responsive">Budget: <span id="progressValue">2000</span> ZAR</h3>
 				</div>
 			</div>
 
@@ -96,8 +102,8 @@
 
 						<!-- Menu Items -->
 						<text x="500" y="95" fill="white" font-size="18" text-anchor="middle">Home</text>
-						<text x="600" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
-						<text x="700" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
+						<text x="560" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
+						<text x="630" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
 
 						<!-- Website Content Block -->
 						<rect x="100" y="150" width="600" height="300" fill="#0078d4" />
@@ -157,8 +163,8 @@
 
 						<!-- Menu Items -->
 						<text x="500" y="95" fill="white" font-size="18" text-anchor="middle">Home</text>
-						<text x="600" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
-						<text x="700" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
+						<text x="560" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
+						<text x="630" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
 
 
 						<!-- Website Content Block -->
@@ -208,8 +214,8 @@
 
 						<!-- Menu Items -->
 						<text x="500" y="95" fill="white" font-size="18" text-anchor="middle">Home</text>
-						<text x="600" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
-						<text x="700" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
+						<text x="560" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
+						<text x="630" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
 
 						<!-- Website Content Block -->
 						<rect x="100" y="150" width="600" height="300" fill="#0078d4" />
@@ -263,8 +269,8 @@
 
 						<!-- Menu Items -->
 						<text x="500" y="95" fill="white" font-size="18" text-anchor="middle">Home</text>
-						<text x="600" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
-						<text x="700" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
+						<text x="560" y="95" fill="white" font-size="18" text-anchor="middle">About</text>
+						<text x="630" y="95" fill="white" font-size="18" text-anchor="middle">Contact</text>
 
 						<!-- Website Content Block -->
 						<rect x="100" y="150" width="600" height="300" fill="#0078d4" />
@@ -858,7 +864,9 @@
 						</ul>
 					</div>
 					<div class="col-12 col-md-6">						
-						<img src="assets/images/left-image.png" class="rounded img-fluid d-block mx-auto" alt="App">
+						<div class="flex-column-center">
+							<img src="assets/images/left-image.png" alt="App symbol">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -916,9 +924,8 @@
 					<!-- Accordion Item 1 -->
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Do they have relevant experience?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">Our portfolio showcases projects across various industries, from
@@ -929,9 +936,8 @@
 					<!-- Accordion Item 2 -->
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">What does their portfolio look like?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We highlight our best work through detailed case studies, including
@@ -942,9 +948,8 @@
 					<!-- Accordion Item 3 -->
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Are their skills up to date?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We use cutting-edge tools and technologies like React, AI
@@ -955,9 +960,8 @@
 					<!-- Accordion Item 4 -->
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">What do other clients say about them?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">Our clients consistently praise our communication, technical
@@ -968,9 +972,8 @@
 					<!-- Accordion Item 5 -->
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Do they communicate clearly?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We prioritize clear, consistent communication, keeping you updated on
@@ -980,9 +983,8 @@
 
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Do they fit within my budget?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We offer flexible pricing models designed to fit your needs, ensuring
@@ -992,9 +994,8 @@
 
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Will they deliver on time?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We adhere to strict deadlines and always keep you informed of the
@@ -1004,9 +1005,8 @@
 
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Do they provide ongoing support?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">Our team is available for continuous support, from updates to
@@ -1016,9 +1016,8 @@
 
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Can they adapt to my needs?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We understand that requirements can change. Our agile development
@@ -1028,9 +1027,8 @@
 
 					<div class="accordion-item">
 						<button class="accordion-button" aria-expanded="false">
-							<span class="indicator"></span>
 							<h3 class="accordion-title responsive">Do they understand my business?</h5>
-
+							<span class="indicator">↓</span>
 						</button>
 						<div class="accordion-content">
 							<p class="responsive">We take the time to understand your business model and industry,
@@ -1045,12 +1043,12 @@
 
 	<footer id="contact-us">
 		<div class="center-heading">
-			<h2 class="responsive"><em>Shall we have </em>a conversation?</h2>
+			<h2 class="responsive" style="color: black;"><em>Shall we have </em>a conversation?</h2>
 		</div>
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="responsive">Discover the Power of <em>Iclips Tech</em></h2>
+					<h2 class="responsive" style="color: black;">Discover the Power of <em>Iclips Tech</em></h2>
 					<p class="responsive">
 						At Iclips, we are your premier destination for custom digital software solutions. Our dedicated
 						team of developers specializes in crafting tailored software to meet your unique needs. Whether
@@ -1125,7 +1123,7 @@
 								Innovative-Tech
 							</text>
 						</svg>
-						<p class="responsive">Copyright &copy; 2010 Iclips Landing Page
+						<p class="responsive">Copyright &copy; 2010 Iclips Tech Landing Page
 
 							| Designed by Us</p>
 						<strong>
