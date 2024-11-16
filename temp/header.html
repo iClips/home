@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Iclips Tech</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+		integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        /************** Header / Titlebar **********************/
+        :root {
+    --theme-dark: #1e1e1e;
+    --titlebar-background: rgba(0, 0, 0, 0.75);  
+    --header-height: 80px;
+
+    --theme-color: #00aaff;
+    --theme-color-dark: #006699;
+    --theme-color-light: #89dfff;
+    
+    --accent-color-dark: #cc560f;
+    --accent-color: #ff6f18;
+    --accent-color-light: #ffab5f;
+    
+    --neutral-color: #f0f0f0;
+    --neutral-color-dark: #2c2f33;
+    --neutral-color-light: #ffffff;
+    
+    --error-color: #ff4d4d;
+    --success-color: #00c851;
+
+    --hero-section-background-color: #f4f4f4; 
+    --color-menu-item-hover: var(--highlight-color); 
+    --color-menu-item: var(--theme-color-light);
+    --tooltip-background-color: var(--titlebar-background); 
+    --highlight-color: #7fff00; 
+    --text-color-light :#1661c9;    
+    --text-color-dark :#1e1e1ee2;    
+    --titlebar-hover-shadow: 0 4px 10px var(--highlight-color);
+        
+    --padding-content: 16px 24px;
+    --padding-card: 12px 16px;
+    --padding-box: 12px;
+    --box-shadow-standard: 0 5px 15px rgb(33 13 168 / 70%);
+    --box-shadow-card: 0 5px 15px rgba(130, 128, 143, 0.7);
+    --box-shadow-highlight: 0 5px 15px rgba(255, 47, 47, 0.7);
+    --color-btn-bg: #003a99;
+
+    --red: #EA4335;
+    --yellow: #FBBC05;
+    --green: #34A853;
+    --blue: #4285F4;
+
+    --red-opa: #EA4335b3;
+    --yellow-opa: #FBBC05b3;
+    --green-opa: #34A853b3;
+    --blue-opa: #4285F4b3;
+
+    /* Dropdown */
+    --dropdown-background: var(--theme-dark);
+    --dropdown-text-color: var(--theme-color);
+
+    /* Popup */
+    --popup-background: #1e1e1ebf;
+    --popup-content-color: #ffffff;    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+h1.responsive {
+    font-size: clamp(22px, 2vw + 0.75rem, 32px);
+}
+@media (max-width: 100vh) { 
+    h1.responsive {
+        font-size: clamp(10px, 1vh + 0.8rem, 40px);
+    }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background-color: var(--titlebar-background);
+    color: #5e6368;
+    box-shadow: var(--titlebar-hover-shadow); 
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s, box-shadow 0.3s;
+    padding: var(--content-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1, h2.responsive {
+    font-weight: 900;
+    color: #333;
+    font-family: 'Orbitron', sans-serif;
+    transition: transform 0.2s ease-in-out;
+}
+
+header h1 span {
+    letter-spacing: -4px;
+}
+
+header h1:hover {
+    transform: scale(1.1);
+}
+
+@media (max-width: 678px) {
+    header {
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+    header:active {
+        box-shadow: var(--titlebar-hover-shadow);
+    }    
+    .main-nav .logo-img {
+        height: 20px;
+    }
+}
+
+header:hover {
+    box-shadow: var(--titlebar-hover-shadow);
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style-type: none;
+    overflow-x: auto;
+}
+
+.nav li {
+    display: flex;
+    text-align: center;
+    padding: var(--padding-card);
+    border-radius: 12px;
+    background: #273134;
+    border: 2px solid #3c5b6b;
+    margin: 12px 16px;
+    box-shadow: 1px 1px 8px #fca900;
+}
+
+.nav .menu-item {
+    text-decoration: none;
+    color: var(--color-menu-item);
+    font-size: clamp(16px, 2vw, 18px);
+    padding: var(--padding-box);
+    transition: color 0.3s;
+    color: #f9fff3 !important;
+    font-weight: bolder;
+}
+
+.nav .menu-item:hover {
+    color: var(--color-menu-item-hover);
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/***************************************** Logo ***************************/
+
+.main-nav .logo-wrapper {
+    position: relative;
+    width: auto;
+    height: 100%;
+    perspective: 800px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+}
+
+.main-nav .logo-img {
+    position: relative;
+    width: auto;
+    height: calc(var(--header-height) - 18px);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.main-nav .logo-border {
+    position: relative; /* Added to contain the absolute ::before */
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centers the logo */
+}
+
+.main-nav .logo-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: 0;
+    right: 0;
+    border-radius: 50%;
+    border: 4px solid transparent; /* Creates space for the gradient */
+    background: linear-gradient(45deg, var(--red), var(--yellow), var(--green), var(--blue)) border-box;
+    animation: rotateBorder 1.0s linear infinite;
+    z-index: 0;
+    /* padding: 4px; Adjust this to fine-tune spacing */
+}
+
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+.r { color: var(--red); }  /* Red */
+.b { color: var(--blue); }  /* Blue */
+.g { color: var(--green); }  /* Green */
+.y { color: var(--yellow); }  /* Yellow */
+
+/* Add keyframes for color animation */
+@keyframes colorChange {
+    0% { color: var(--red); }  /* Red */
+    25% { color: var(--yellow); }  /* Yellow */
+    50% { color: var(--green); }  /* Green */
+    75% { color: var(--blue); }  /* Blue */
+    100% { color: var(--red); }  /* Back to Red */
+}
+
+.logo span {
+    animation: colorChange 6.3s linear infinite;
+}
+
+.logo span:nth-child(1) { animation-delay: 0s; }  /* 'I' */
+.logo span:nth-child(2) { animation-delay: 0.5s; }  /* 'C' */
+.logo span:nth-child(3) { animation-delay: 1s; }  /* 'L' */
+.logo span:nth-child(4) { animation-delay: 1.5s; }  /* 'I' */
+.logo span:nth-child(5) { animation-delay: 2s; }  /* 'P' */
+.logo span:nth-child(6) { animation-delay: 2.5s; }  /* 'S' */
+.logo span:nth-child(7) { animation-delay: 3s; }  /* ' ' (space) */
+.logo span:nth-child(8) { animation-delay: 3.5s; }  /* 'T' */
+.logo span:nth-child(9) { animation-delay: 4s; }  /* 'E' */
+.logo span:nth-child(10) { animation-delay: 4.5s; } /* 'C' */
+.logo span:nth-child(11) { animation-delay: 5s; }  /* 'H' */
+
+@media (max-width: 1240px) {
+    .break {
+        display: block;
+        line-height: 0;
+    }  
+}
+
+/************** /Header / Titlebar **********************/
+
+    </style>
+</head>
+
+<body>
+	<header>
+		<nav class="main-nav">
+			<div class="logo-wrapper">
+				<div class="logo-border">
+					<img src="logo-it.png" alt="Logo" class="logo-img">
+				</div>
+				<h1 class="logo responsive">
+					<span class="b">I</span>
+					<span class="y">c</span>
+					<span class="g">l</span>
+					<span class="r">i</span>
+					<span class="b">p</span>
+					<span class="y">s</span>
+					<span class="break">&nbsp;</span>
+					<span class="g">T</span>
+					<span class="r">e</span>
+					<span class="b">c</span>
+					<span class="y">h</span>
+				</h1>
+			</div>
+			<button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+			<ul class="nav">
+				<li class="scroll-to-section"><a href="#welcome" class="menu-item responsive">Home</a></li>
+				<li class="scroll-to-section"><a href="#about" class="menu-item responsive">About Us</a></li>
+				<li class="scroll-to-section"><a href="#types" class="menu-item responsive">What We Do</a></li>
+				<li class="scroll-to-section"><a href="#projects" class="menu-item responsive">Demonstrations</a></li>
+				<li class="scroll-to-section"><a href="#contact-us" class="menu-item responsive">Contact Us</a></li>
+			</ul>
+		</nav>
+	</header>
+</body>
+</html>

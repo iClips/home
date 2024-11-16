@@ -55,3 +55,54 @@ function closeModal() {
       overlay.style.display = 'none';
   }, 400); // Match this duration with CSS transition time
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  setInterval(() => {
+      typeCode("codeBlock1", code1, 30);
+      typeCode("codeBlock2", code2, 30);
+      typeCode("codeBlock3", code3, 30);
+      typeCode("codeBlock4", code4, 30);
+  }, 7000);
+});
+
+const code1 = 
+  `class BankAccount {
+      constructor(owner, balance = 0) {
+          this.owner = owner;
+          this.balance = balance;
+      }
+  }`;
+
+const code2 = 
+  `const myAccount = new BankAccount("Your Name", 5000);
+  myAccount.deposit(10000000);
+  console.log(\`Final balance: R\${myAccount.balance.toLocaleString('en-ZA')}\`);`;
+
+const code3 = 
+  `function calculateInterest(balance, rate) {
+      return balance * rate / 100;
+  }
+  console.log(calculateInterest(10000, 5));`;
+
+const code4 = 
+  `function withdrawMoney(amount) {
+      return amount;
+  }
+  console.log(calculateInterest(amount, 5));`;
+
+function typeCode(elementId, code, speed = 50) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = '';
+    let index = 0;
+    
+    function type() {
+        if (index < code.length) {
+            element.innerHTML += code[index] === "\n" ? "<br/>" : code[index];
+            index++;
+            setTimeout(type, speed);
+        }
+
+    }
+
+    type();
+}

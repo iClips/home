@@ -70,7 +70,7 @@
     </div>
 	<section id="welcome" class="hero">
 		<div class="spacer-for-scroll"></div>	
-	
+		<div class="spacer-for-scroll"></div>	
 		<div class="div-hero">			
 			<h2 id="welcome_show" class="tag slide-in-bottom responsive">Welcome to our world of personalized digital solutions! Custom app solutions designed to fit your vision and your wallet. From basic needs to premium features, we have something for everyone.</h2>
 
@@ -78,7 +78,7 @@
 				<div class="instruction-note">Move the slider to estimate what you can expect within your budget.</div>
 				<input type="range" min="0" max="100" value="20" step="20" class="slider" id="projectSlider">
 				<div class="slider-indicator">
-					<h3 class="responsive">Budget: <span id="progressValue">2000</span> ZAR</h3>
+					<h3 class="responsive">Budget (+-): R<span id="progressValue">2000</span></h3>
 				</div>
 			</div>
 
@@ -501,29 +501,71 @@
 					<div class="col-12 col-md-6">
 						<div class="d-flex align-items-center justify-content-center" style="height: 100%;">
 							<div class="scene">
-								<div class="cube">
-									<div class="front">
-										<p class="glow-text responsive">Iclips Tech</p>
+								<div class="cube">									
+									<div class="front face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Iclips Tech</p>											
+											</div>
+										</div>
 									</div>
 
-									<div class="back">
-										<p class="glow-text responsive">Imagine Tomorrow</p>
+									<div class="back face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Imagine Tomorrow</p>											
+											</div>
+										</div>
 									</div>
 
-									<div class="right">
-										<p class="glow-text responsive">Innovate Together</p>
+									<div class="right face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Innovate Together</p>											
+											</div>
+										</div>
 									</div>
 
-									<div class="left">
-										<p class="glow-text responsive">Inspire Triumph</p>
+									<div class="left face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Inspire Triumph</p>											
+											</div>
+										</div>
 									</div>
 
-									<div class="top">
-										<p class="glow-text responsive">Invent Tools</p>
+									<div class="top face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Invent Tools</p>											
+											</div>
+										</div>
 									</div>
 
-									<div class="bottom">
-										<p class="glow-text responsive">Improve Technology</p>
+									<div class="bottom face">
+										<div class="background-container">
+											<div class="background-content">
+												
+											</div>
+											<div class="foreground-content">		
+												<p class="glow-text responsive">Improve Technology</p>											
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -535,11 +577,11 @@
 							<li class="tag slide-in-right">
 								<svg width="100" height="100" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
 									<!-- Laptop Body -->
-									<rect x="30" y="50" width="140" height="60" rx="10" fill="#4db8ff" />
+									<rect x="10" y="10" width="160" height="120" rx="10" fill="#4db8ff" />
 									<!-- Laptop Screen -->
-									<rect x="40" y="60" width="120" height="40" fill="#ffffff" />
+									<rect x="20" y="20" width="140" height="70" fill="#ffffff" />
 									<!-- Keyboard Base -->
-									<rect x="40" y="105" width="120" height="10" fill="#cccccc" rx="2" />
+									<rect x="20" y="95" width="140" height="30" fill="#cccccc" rx="2" />
 
 									<!-- Left Hand Typing -->
 									<path d="M45 115 Q 50 110 55 115 T 65 115 Q 60 110 55 105 Q 50 110 45 115 Z"
@@ -552,8 +594,8 @@
 									<!-- Moving Code Snippets (Animated with CSS) -->
 									<g class="code-snippet"
 										style="transform-origin: 50px 70px; animation: move-snippet-1 3s infinite alternate ease-in-out;">
-										<rect x="50" y="70" width="110" height="10" fill="#007acc" />
-										<text x="55" y="78" font-family="Arial" font-size="8" fill="#ffffff">Client
+										<rect x="30" y="40" width="140" height="30" fill="#007acc" />
+										<text x="35" y="48" font-family="Arial" font-size="12" fill="#ffffff">Client
 											Server Applications</text>
 									</g>
 
@@ -873,44 +915,52 @@
 		</section>
 
 		<section class="team-section">
-			<svg class="team-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="400px">
-				<defs>
-					<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-						<stop offset="0%" style="stop-color:#007acc8c; stop-opacity:1" />
-						<stop offset="100%" style="stop-color:#005f998c; stop-opacity:1" />
-					</linearGradient>
-				</defs>
-		
-				<!-- Background Gradient -->
-				<rect width="100%" height="100%" fill="url(#gradient)" />
-		
-				<!-- Central Teamwork Circle (represents unity) -->
-				<circle class="team-node" cx="400" cy="100" r="80" fill="rgba(255, 255, 255, 0.1)" />
-		
-				<!-- Dynamic Connections (lines representing collaboration) -->
-				<line class="connection" x1="400" y1="100" x2="750" y2="200" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="50" y2="200" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="750" y2="400" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
-				<line class="connection" x1="400" y1="100" x2="100" y2="400" stroke="rgba(255, 255, 255, 0.4)" stroke-width="2" />
-		
-				<!-- Orbiting Circles (representing individuals within the team) -->
-				<circle class="small-node" cx="750" cy="200" r="25" />
-				<circle class="small-node" cx="50" cy="200" r="25" />
-				<circle class="small-node" cx="750" cy="400" r="25" />
-				<circle class="small-node" cx="100" cy="400" r="25" />
-			</svg>
-		
-			<div class="team-content">
-				<h2 class="responsive">Meet our <em>Team</em></h2>
-				<p class="responsive">Our amazing team is represented here, constantly collaborating and evolving together.</p>
-				<a href="team/" class="team-link responsive">View Team</a>
-			</div>
+			<div class="background-container">
+				<div class="background-content">
+					<!-- Any content that you want as the background -->
+					<div class="snippet-container">
+						<div id="codeBlock1" class="code-block move-up" style="bottom: 10%; left: 40%; font-size: 24px; background-color: rgba(60, 126, 224, 0.687); z-index: 40;"></div>			
+	
+						<div id="codeBlock4" class="code-block move-down" style="top: 10%; right: 40%; font-size: 24px; background-color: rgba(179, 24, 24, 0.726); z-index: 30;"></div>				
+	
+						<div id="codeBlock2" class="code-block move-left" style="bottom: 40%; left: 10%; font-size: 24px; background-color: rgba(11, 206, 11, 0.787); z-index: 20;"></div>				
+	
+						<div id="codeBlock3" class="code-block move-right" style="top: 40%; right: 10%; font-size: 24px; background-color: rgba(23, 87, 226, 0.847); z-index: 10;"></div>				
+					</div>
+				</div>
+				<div class="foreground-content">		
+					<svg class="team-background" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="400px">
+						<!-- Central Teamwork Circle (represents unity) -->
+						<circle class="team-node" cx="400" cy="100" r="80" fill="rgba(255, 255, 255, 0.1)" />
+				
+						<!-- Dynamic Connections (lines representing collaboration) -->
+						<!-- <line class="connection-line line-1" x1="400" y1="80" x2="800" y2="400"></line> -->
+						<!-- <line class="connection-line line-2" x1="400" y1="80" x2="750" y2="300" />
+						<line class="connection-line line-3" x1="400" y1="80" x2="200" y2="600" />
+						<line class="connection-line line-4" x1="400" y1="80" x2="50" y2="300" /> -->
+					</svg>
+				
+					<!-- Orbiting Circles -->
+					<div class="circle-container">
+						<div class="small-node" style="top: 0; left: 50%;"></div>
+						<div class="small-node" style="top: 50%; left: 100%;"></div>
+						<div class="small-node" style="top: 100%; left: 50%;"></div>
+						<div class="small-node" style="top: 50%; left: 0;"></div>
+					</div>
+				
+					<div class="team-content">
+						<h2 class="responsive"><em>Meet our Team</em></h2>
+						<p class="responsive">Our amazing team is represented here, constantly collaborating and evolving together.</p>
+						<a href="team/" class="team-link responsive">View Team</a>
+					</div>	
+				</div>
+			</div>		
 		</section>
 
 		<section class="accordion-section">
 			<div class="container">
 				<div class="text-content">
-					<h2 class="title responsive">Something on your mind? Let's clear it up.</h2>
+					<h3 class="title responsive">Something on your mind? Let's clear it up.</h3>
 					<p class="description responsive">
 						"I want to make you feel comfortable and at ease by answering important questions you might
 						have. Whether you're wondering about our experience, communication, or ongoing support, this
@@ -1048,7 +1098,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="responsive" style="color: black;">Discover the Power of <em>Iclips Tech</em></h2>
+					<h3 class="responsive" style="color: white;">Discover the Power of <em>Iclips Tech</em></h3>
 					<p class="responsive">
 						At Iclips, we are your premier destination for custom digital software solutions. Our dedicated
 						team of developers specializes in crafting tailored software to meet your unique needs. Whether
@@ -1124,7 +1174,6 @@
 							</text>
 						</svg>
 						<p class="responsive">Copyright &copy; 2010 Iclips Tech Landing Page
-
 							| Designed by Us</p>
 						<strong>
 							<p class="responsive"><a href="https://www.iclips.co.za/terms">View our Terms and
