@@ -10,7 +10,7 @@
     --header-height: 80px;
 
     --theme-color: #00aaff;
-    --theme-color-dark: #5be0cf;
+    --theme-color-dark: #006699;
     --theme-color-light: #89dfff;
     
     --accent-color-dark: #cc560f;
@@ -1170,7 +1170,7 @@ ul li.tag:hover {
 .about-us .details {
     margin-top: 30px;
     padding: var(--padding-content);
-    background: var(--color-highlight);
+    background: var(--accent-color);
     color: #fff;
     font-weight: 600;
     border-radius: 12px;
