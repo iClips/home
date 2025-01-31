@@ -56,3 +56,8 @@ scene.addEventListener('touchmove', (e) => {
 scene.addEventListener('touchend', () => {
     isDragging = false;
 }, { passive: true });
+
+
+            function rotateCube(x, y) {
+            document.getElementById('cube').style.transform = `rotateX(${x}deg) rotateY(${y}deg)`;
+        }
