@@ -1,3 +1,13 @@
+function getOrientation() {
+  if (screen.orientation.type.includes("landscape")) {
+    return "Landscape";
+  } else {
+    return "Portrait";
+  }
+}
+
+console.log(getOrientation());
+
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('preloader').style.display = 'none';
     
@@ -11,13 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let initialHeight = header.offsetHeight;
 
     window.addEventListener("scroll", function () {
-        let scrollY = window.scrollY;
-        let scale = Math.max(0.7, 1 - scrollY / (initialHeight * 2)); // Scale down to 70%
-        let opacity = Math.max(0.5, 1 - (scrollY - initialHeight * 0.3) / (initialHeight * 2));
-
-        header.style.transform = `scale(1, ${scale})`; // Scale only height, keep width unchanged
-        header.style.backdropFilter = `blur(${(1 - opacity) * 10}px)`;
-        header.style.background = `rgba(0, 0, 0, ${opacity})`; // Adjust transparency
+        if(getOrientation() == 'Lanscape') {
+            let scrollY = window.scrollY;
+            let scale = Math.max(0.7, 1 - scrollY / (initialHeight * 2)); // Scale down to 70%
+            let opacity = Math.max(0.5, 1 - (scrollY - initialHeight * 0.3) / (initialHeight * 2));
+    
+            header.style.transform = `scale(1, ${scale})`; // Scale only height, keep width unchanged
+            header.style.backdropFilter = `blur(${(1 - opacity) * 10}px)`;
+            header.style.background = `rgba(0, 0, 0, ${opacity})`; // Adjust transparency
+        }
+        
     });
 });
 
