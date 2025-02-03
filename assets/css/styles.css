@@ -236,9 +236,7 @@ header:hover {
     justify-content: center;
     text-align: center;
     border-radius: 12px;
-    background: #273134;
     margin: 12px 4px;
-    box-shadow: 1px 1px 8px var(--theme-color-light) inset;
 }
 
 .nav .menu-item {
